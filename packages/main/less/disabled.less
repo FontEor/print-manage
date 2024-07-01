@@ -1,0 +1,55 @@
+.disabled-form {
+  .el-input.is-disabled {
+    .el-input__inner {
+      background: transparent !important;
+      border: none !important;
+      color: var(--el-input-font-color, var(--el-text-color-regular));
+      -webkit-text-fill-color: var(--el-input-font-color, var(--el-text-color-regular));
+    }
+    .el-input__wrapper {
+      border-color: transparent;
+      background-color: transparent;
+      box-shadow: none;
+      &:hover {
+        border-color: transparent !important;
+        box-shadow: none !important;
+      }
+    }
+  }
+  .el-select {
+    .el-input.is-disabled {
+      .el-input__wrapper {
+        border-color: transparent;
+        background-color: transparent;
+        box-shadow: none;
+      }
+      .el-input__suffix {
+        display: none !important;
+      }
+    }
+  }
+  .el-textarea.is-disabled {
+    textarea {
+      background: transparent !important;
+      border: none !important;
+      padding-top: 5px;
+      box-shadow: none;
+      color: var(--el-input-font-color, var(--el-text-color-regular));
+    }
+  }
+  .el-cascader {
+    width: 100%;
+    &.is-disabled {
+      background-color: transparent;
+      &:hover {
+          border-color: transparent;
+          outline: none;
+        }
+      
+        .el-input__suffix {
+          opacity: 0;
+        }
+    }
+    
+  }
+}

@@ -1,0 +1,100 @@
+@import url(var.less);
+.list-container {
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  height: calc(100vh - 80px);
+
+  .list-search {
+    justify-content: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    align-items: baseline;
+    .search-active-container {
+      flex: 1;
+      margin-right: calc(4% - 30px);
+      transform: translateY(2px);
+      .el-form-item__content {
+        justify-content: flex-end;
+      }
+      .el-button {
+        display: inline-block;
+      }
+    }
+    .el-form-item {
+      min-width: 15%;
+      margin-right: 10px;
+    }
+    .el-select {
+      width: 100%;
+    }
+  }
+  .list-tools-container {
+    margin-bottom: 20px;
+    text-align: right;
+  }
+  .el-table {
+    width: 100%;
+    flex: 1;
+  }
+  .el-pagination {
+    position: relative;
+    margin-top: 1.5rem;
+    justify-content: flex-end;
+    .el-pager {
+      li {
+        color: @pager-text-color;
+        background-color: @pager-text-background-color !important;
+        border: 1px solid @pager-border-color;
+        font-weight: normal;
+        border-radius: 4px;
+        &:not(.is-disabled).is-active {
+          color: @pager-text-active-color !important;
+          background-color: @pager-text-active-background-color !important;
+          border: 1px solid @pager-border-active-color;
+        }
+        &:hover {
+          border: 1px solid @pager-border-hover-color;
+          background-color:  @pager-text-hover-background-color;
+        }
+      }
+    }
+    .btn-prev,
+    .btn-next {
+      color: @pager-next-prev-color !important;
+      background-color: @pager-next-prev-background-color !important;
+      border: 1px solid @pager-border-color;
+      border-radius: 4px;
+      &:hover {
+        border: 1px solid @pager-border-hover-color;
+        background-color:  @pager-text-hover-background-color;
+      }
+    }
+    .el-pagination__total {
+      position: absolute;
+      left: 0;
+      top: 3px;
+    }
+    .el-pagination__sizes {
+      margin-left: 8px;
+    }
+  }
+}
+
+.tab-list-container {
+  padding: 15px;
+}
+
+
+#app {
+  .table-actions-column {
+    .cell {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

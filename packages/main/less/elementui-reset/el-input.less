@@ -1,0 +1,293 @@
+.el-range-editor.el-input__wrapper {
+  border: 1px solid transparent;
+  transition: all 0.4s;
+  border-radius: 8px;
+  --el-input-hover-border-color: var(--s-blue-shadow-color);
+
+  &:hover {
+    box-shadow: 0 0 0 2px var(--el-input-hover-border-color) inset !important;
+  }
+}
+
+.el-range-editor.is-active {
+  --el-input-bg-color: var(--s-input-active-bg-color);
+  border-color: var(--s-blue-color) !important;
+  box-shadow: 0 0 0 3px var(--s-blue-shadow-color) !important;
+}
+
+// textarea 样式
+textarea {
+  resize: both;
+  // background-image: url("../../assets/img/text-area-icon.png") !important;
+  // background-repeat: no-repeat;
+  // background-position: bottom 4px right 3px;
+  // background-size: 8px 10px;
+}
+
+.el-textarea {
+  position: relative;
+
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 10px;
+    position: absolute;
+    bottom: 4px;
+    right: 3px;
+    background-image: url("../../assets/img/text-area-icon.png") !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+  }
+  &.resize-none {
+    &::after {
+      display: none;
+    }
+  }
+}
+
+textarea::-webkit-resizer {
+  display: none;
+}
+
+// 及联选择器
+.el-cascader {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+
+  .el-input__wrapper {
+    min-height: 32px;
+  }
+
+  //.el-cascader__tags {
+  //  min-height: 32px;
+  //  display: flex;
+  //  align-items: center;
+  //
+  //  .el-tag {
+  //    height: 24px;
+  //  }
+  //  //  +N tag始终保持无背景色
+  //  .el-tag--info:not(.is-closable )  {
+  //    background-color: transparent !important;
+  //  }
+  //
+  //}
+
+  .el-cascader__search-input {
+    display: none;
+  }
+
+  // 级联选择器选中样式
+  .is-focus {
+    &+.el-cascader__tags {
+      .is-closable {
+        background-color: var(--s-bg-color) !important;
+      }
+    }
+  }
+
+}
+
+// 及联选择器下拉选项
+.el-popper.el-cascader__dropdown {
+  .el-cascader-node {
+    border-radius: 8px;
+    &:not(.is-disabled) {
+      &:hover {
+        background-color: var(--s-bg-color);
+      }
+    }
+
+    .is-checked {
+      --el-checkbox-checked-bg-color: var(--s-blue-6);
+      --el-checkbox-checked-input-border-color: var(--s-blue-6);
+      &+.el-cascader-node__label {
+        color: var(--s-blue-6)!important;
+        &+.el-cascader-node__postfix {
+          color: var(--s-blue-6) !important;
+        }
+      }
+    }
+    &:focus {
+      background-color: var(--s-blue-shadow-color) !important; 
+    }
+
+  }
+  .is-active {
+    &:not(.is-disabled) {
+      color: var(--s-blue-6);
+    }
+  }
+
+  .el-cascader-panel {
+    margin: -12px !important;
+  }
+
+  .el-cascader-menu__list {
+    margin: 0 4px !important;
+  }
+  .in-active-path {
+    color: var(--s-blue-6);
+  }
+  .is-indeterminate { 
+    .el-checkbox__inner {
+      background-color: var(--s-blue-6) !important;
+      border-color: var(--s-blue-6);
+    }
+  }
+
+}
+
+
+// 下拉框下拉选项样式
+.el-select-dropdown__item {
+  border-radius: 8px;
+  margin-bottom: 4px;
+
+  &.hover {
+    background-color: var(--s-bg-color) !important;
+    color: var(--s-text-color-2) !important;
+  }
+
+  &.selected {
+    background-color: var(--s-brand-b-color-alpha) !important;
+    color: var(--s-blue-6) !important;
+  }
+}
+
+// input select cascader textarea hover样式
+.el-select,
+.el-input,
+.el-cascader,
+.el-textarea {
+  --el-input-bg-color: var(--s-bg-color);
+  --el-input-border-color: transparent;
+  --el-input-hover-border-color: var(--s-blue-shadow-color);
+  --el-input-border-radius: 8px;
+  --el-text-color-regular: var(--s-text-color-1);
+  --el-input-text-color: var(--s-text-color-3);
+
+  .el-input__wrapper,
+  .el-textarea__inner {
+    border: 1px solid transparent;
+    transition: border-color 0.3s, box-shadow 0.3s !important;
+  }
+
+  &:hover {
+
+    .el-input__wrapper,
+    .el-textarea__inner {
+      --el-input-bg-color: var(--s-input-active-bg-color);
+      box-shadow: 0 0 0 3px var(--s-border-color-alpha) !important;
+      border-color: var(--s-blue-color);
+    }
+
+    .el-tag--info {
+      background-color: var(--s-bg-color) !important;
+
+      &:last-of-type {
+        background-color: var(--s-main-bg-color) !important;
+      }
+    }
+
+  }
+
+  // select选中样式
+  .el-input.is-focus {
+    .el-input__wrapper {
+      --el-input-bg-color: var(--s-input-active-bg-color);
+      box-shadow: 0 0 0 3px var(--s-border-color-alpha) !important;
+      border-color: var(--s-blue-color);
+    }
+  }
+
+  // select选中样式
+  .el-select__tags {
+    &:has(+.is-focus) {
+      .el-select-tags-wrapper {
+        .el-tag--info {
+          background-color: var(--s-bg-color);
+        }
+      }
+    }
+    .el-select-tags-wrapper {
+      .el-tag--info:not(.is-closable )  {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+
+// input 与textarea focus
+.el-input .is-focus,
+.el-textarea__inner:focus {
+  --el-input-bg-color: var(--s-input-active-bg-color);
+  border-color: var(--s-blue-color) !important;
+  box-shadow: 0 0 0 3px var(--el-input-hover-border-color) !important;
+  --el-input-text-color: var(--s-text-color-1);
+}
+
+// input框右侧icon
+.el-input__suffix-inner {
+    color: var(--s-text-color-2);
+    stroke: var(--s-text-color-2);
+
+    // select样式
+  .icon-arrow-down, .el-select__icon {
+    stroke-width: 90;
+    font-size: 16px !important;
+  }
+
+  // 清除样式
+  .icon-circle-close, .el-input__clear {
+    height: 16px !important;
+    width: 16px !important;
+    border-radius: 16px;
+    background-color:var(--s-cascader-tag-close) ;
+    color: var(--s-cascader-tag-close-text);
+    // transform: translate(4px, 0);
+    &:hover {
+      background-color:var(--s-cascader-tag-close-hover) ;
+    }
+    path {
+      &:nth-child(1) {
+        fill: var(--s-cascader-tag-close-text);
+        transform: scale(1.5);
+        transform-origin: center;
+      }
+      &:nth-child(2) {
+        display: none;
+      }
+    }
+  }
+
+  // 校验Icon
+  .el-input__validateIcon {
+    display: none;
+  }
+}
+
+// 修改所以input 以及 cascader 中tags关闭样式
+.is-closable {
+  .el-tag__close {
+    background-color:transparent;
+    svg {
+      path {
+        color: var(--s-cascader-tag-close-font);
+      }
+    }
+    &:hover {
+      background-color: var(--s-cascader-tag-close-hover);
+      svg {
+        path {
+          color: var(--s-cascader-tag-close-font-hover);
+        }
+      }
+    }
+  }
+}

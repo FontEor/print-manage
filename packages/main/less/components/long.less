@@ -1,0 +1,233 @@
+.long-card {
+    // width: 413px;
+    height: 143px;
+    border-radius: 8px;
+    margin: 0 24px 24px 0;
+
+    &:hover {
+        border-color: var(--s-blue-6);
+        cursor: pointer;
+    }
+
+    &.el-card {
+        border-radius: 8px;
+    }
+
+    .el-card__body {
+        padding: 0;
+    }
+
+    .long-card__body {
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+
+        .card-image-container {
+            width: 100px;
+            height: 100px;
+            background: var(--s-mask-color);
+            border: 1px solid var(--s-divider-other-color);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #D8D8D8;
+            border-radius: 8px;
+
+            .container-empty-img {
+                width: 100%;
+                height: 100%;
+            }
+
+            .container__border {
+                width: 60px;
+                height: 60px;
+            }
+
+            &:hover {
+                .mask-view-mixin {
+                    opacity: 1;
+                }
+            }
+
+            .container-cover {
+                position: absolute;
+                bottom: 0;
+                width: 100px;
+                height: 22px;
+                // background-color: var(--s-mark-bg-color);
+                color: var(--s-mask-color);
+                border-radius: 0px 0px 8px 8px;
+                background: rgba(24,37,70,0.6);
+                .container-cover-text {
+                    font-size: 12px;
+                    margin-top: 4px;
+                }
+            }
+        }
+
+        .body__content {
+            flex: 1;
+            margin-left: 12px;
+            text-align: start;
+            overflow-x: hidden;
+            overflow-y: clip;
+            white-space: nowrap;
+            word-wrap: normal;
+            text-overflow: ellipsis;
+            .content__header {
+                display: flex;
+                justify-content: space-between;
+                line-height: 18px;
+
+                .header__title {
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    position: relative;
+                    color: var(--s-text-color-3);
+                    font-size: 12px;
+                    cursor: pointer;
+                    padding-right: 16px;
+                    .card-title-icon {
+                        bottom: 3px;
+                        right: 0;
+                        position: absolute;
+                    }
+                    &:hover {
+                        color: var(--s-blue-color);
+                    }
+                }
+
+                .el-rate {
+                    height: 16px;
+                    font-size: 14px;
+                }
+            }
+
+            .content__title {
+                width: auto;
+                color: var(--s-text-color-2);
+                font-size: 14px;
+                line-height: 20px;
+                margin: 2px 0 0 0 ;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-weight: 500;
+                display: inline-block;
+
+                .el-link {
+                    color: var(--s-text-color-2);
+
+                    &:hover {
+                        color: var(--s-blue-color);
+                    }
+                }
+            }
+
+            .content__info {
+                font-size: 12px;
+                font-weight: normal;
+                color: #868D9F;
+                line-height: 14px;
+            }
+
+            .content__tag {
+                line-height: 20px;
+                font-size: 12px;
+                margin: 4px 0;
+                height: 20px;
+
+                .el-tag--danger {
+                    color: var(--s-brand-b-sub-color);
+                    border: none;
+                    background: #ffecf2;
+                    border-radius: 4px;
+                    margin-right: 4px;
+                    
+                }
+                .el-tag--info {
+                    max-width: 60px;
+                    min-width: 55px !important;
+                    margin-right: 4px;
+                    padding: 1px 5px;
+                    --el-tag-border-color: var(--el-color-info-light-9);
+                    --el-tag-bg-color: var(--s-divider-weak-color);
+
+                    .el-tag__content {
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+                .content__tag-tips {
+                    width: 28px !important;
+                    height: 20px !important;
+                    max-width: 28px;
+                    min-width: 28px !important;
+                }
+            }
+
+            .content__time {
+                color: var(--s-text-color-4);
+                font-size: 12px;
+                line-height: 18px;
+            }
+        }
+    }
+
+    .long-card__divider {
+        height: 1px;
+        width: 100%;
+        border-top: 1px solid var(--s-divider-color);
+    }
+
+    .long-card__footer {
+        display: flex;
+        height: 34px;
+        padding: 0 10px 0 0;
+        justify-content: space-between;
+        align-items: center;
+
+        .el-dropdown {
+            
+            transform: translateX(-1px);
+            :focus-visible {
+                outline: transparent 0;
+            }
+            .el-icon {
+                transform: translate(11px, 1px);
+            }
+
+            .el-dropdown-link {
+                // width: 36px;
+                display: inline-block;
+                line-height: 34px;
+            }
+        }
+
+        .footer__ellipsis {
+            padding-left: 10px;
+            min-width: 36px;
+            height: 100%;
+        }
+    }
+
+    .star {
+        font-size: 16px;
+
+        &.jdl-icon-star-on::before {
+            color: var(--s-yellow-color);
+        }
+
+        &.jdl-icon-star-off::before {
+            color: var(--s-divider-color);
+        }
+    }
+
+    .el-button {
+        min-width: 56px;
+    }
+}

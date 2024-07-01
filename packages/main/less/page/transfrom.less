@@ -1,0 +1,65 @@
+.transfrom-template-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    margin-bottom: 20px;
+  }
+
+  .transfrom-template-content {
+    position: relative;
+    width: 800px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+
+    >div {
+      width: 390px;
+
+      .el-image::after {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 50px;
+        background-color: rgba(0, 0, 0, 0.05);
+        text-align: center;
+        line-height: 50px;
+        font-style: 16px;
+      }
+    }
+
+    div:first-child {
+      text-align: right;
+
+      .el-image::after {
+        content: "原模板预览图";
+      }
+    }
+
+    div:last-child {
+      text-align: left;
+
+      .el-image::after {
+        content: "新模板预览图";
+      }
+    }
+
+    .el-image {
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      width: 390px;
+      height: 500px;
+      box-shadow: 0 0 15px rgb(136 106 181 / 50%);
+    }
+  }
+}

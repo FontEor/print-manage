@@ -1,0 +1,105 @@
+.el-pagination {
+
+  .el-pager li,
+  .btn-next,
+  .btn-prev {
+    margin: 0;
+    --el-pagination-button-height: 28px;
+    --el-pagination-button-width: 20px;
+    padding: 4px;
+    min-width: 28px;
+
+    &.is-active {
+      --el-pagination-hover-color: var(--s-blue-6);
+    }
+
+    &:hover {
+      background-color: var(--s-bg-color);
+      color: var(--s-text-color-2);
+      border-radius: 8px;
+    }
+  }
+
+  .el-pagination__sizes,
+  .el-select {
+    --el-pagination-button-height: 28px;
+    line-height: 28px;
+  }
+
+  .el-input .el-input__inner {
+    height: 26px;
+    color: var(--f-light-primary);
+  }
+
+  .el-pagination__total {
+    margin-right: 8px;
+    color: #999 // TODO:此颜色不在色卡中，待ui确认
+  }
+
+  span:not([class*=suffix]) {
+    &.el-pagination__jump {
+      font-size: 12px;
+      margin-left: 8px;
+    }
+  }
+  .el-pagination__sizes {
+    margin: 0 8px;
+  }
+  .el-pagination__sizes+button.btn-prev[type=button] {
+    margin-left: 4px;
+  }
+  .el-pager+button.btn-next[type=button] {
+    margin-right: 4px;
+  }
+
+
+  &.is-background {
+
+    .el-pager li,
+    .btn-next,
+    .btn-prev {
+      border-radius: 8px;
+      --el-pagination-button-bg-color: var(--s-main-bg-color);
+      --el-pagination-hover-color: var(--s-black-6);
+
+
+      &.is-active {
+        --el-color-primary: var(--s-blue-6);
+        &:hover {
+          background-color: var(--s-blue-6)!important;
+        }
+      }
+
+      &:hover {
+        background-color: var(--s-bg-color)
+      }
+    }
+  }
+  &.is-background {
+    .btn-prev, .btn-next {
+      background-color: transparent;
+      &:hover {
+        background-color: transparent;
+      }
+      &:disabled {
+        background-color: transparent;
+      }
+    }
+  }
+
+}
+
+.el-popper {
+
+  .el-select-dropdown__item.hover,
+  .el-select-dropdown__item:hover {
+    background-color: var(--s-border-color-alpha);
+    --el-text-color-regular: var(--s-blue-6);
+  }
+
+  .el-select-dropdown__item.selected {
+    --el-color-primary: var(--s-blue-6);
+  }
+}
+
+

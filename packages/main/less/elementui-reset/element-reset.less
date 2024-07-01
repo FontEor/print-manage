@@ -1,0 +1,118 @@
+// 按钮
+// .el-button {
+//   --el-button-bg-color: var(--s-bg-color);
+// }
+
+#app.mounted-div {
+  // 主色调重置
+  --el-color-primary: var(--s-blue-color);
+  // 菜单重置
+  --el-menu-bg-color: var(--s-header-bg-color);
+  --el-menu-border-color: transparent;
+  --el-menu-hover-bg-color: transparent;
+  --el-menu-hover-text-color: var(--s-text-color-2);
+  --el-menu-text-color: var(--s-text-color-2);
+
+  .el-link {
+    --el-link-font-weight: normal;
+    display: inline;
+    vertical-align: baseline;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  // 弹框
+  .el-dialog {
+    --el-dialog-box-shadow: 0 4px 16px 0 rgba(35, 37, 43, 0.1);
+    --el-dialog-border-radius: 8px;
+    --el-dialog-title-font-size: 16px;
+    --el-dialog-padding-primary: 13px;
+
+    .el-dialog__title {
+      font-weight: 500;
+    }
+
+    .el-dialog__header {
+      padding-bottom: var(--el-dialog-padding-primary);
+    }
+
+    .el-dialog__footer {
+      padding-top: var(--el-dialog-padding-primary);
+      padding-right: 24px;
+
+      .el-button {
+        min-width: 88px;
+      }
+    }
+
+    .el-dialog__headerbtn {
+      top: 0;
+    }
+  }
+
+  ::placeholder {
+    color: var(--s-text-color-3);
+  }
+
+  .el-input.is-focus {
+    .el-input__wrapper {
+      box-shadow: 0 0 0 3px var(--el-input-hover-border-color) !important;
+      border-color: var(--s-blue-color);
+    }
+  }
+
+  // 输入框重置
+  .el-input__wrapper,
+  .el-textarea__inner {
+    border: 1px solid transparent;
+    // transition: all 0.4s;
+
+    &:hover {
+      box-shadow: 0 0 0 2px var(--el-input-hover-border-color) inset !important;
+    }
+  }
+
+  .el-input,
+  .el-textarea {
+    --el-input-bg-color: var(--s-bg-color);
+    --el-input-border-color: transparent;
+    --el-input-hover-border-color: var(--s-blue-shadow-color);
+    --el-input-border-radius: 8px;
+    --el-text-color-regular: var(--s-text-color-1);
+
+    &:hover {
+      --el-input-bg-color: var(--s-input-active-bg-color);
+    }
+  }
+
+  // 多选框重置
+  .el-checkbox {
+    --el-checkbox-input-border: 2px var(--el-border-style) var(--s-divider-color);
+    --el-checkbox-font-weight: normal;
+    --el-checkbox-border-radius: 4px;
+    --el-checkbox-text-color: var(--s-text-color-1);
+
+    .el-checkbox__label {
+      transition: color 0.25s cubic-bezier(.71, -.46, .29, 1.46), background-color .25s cubic-bezier(.71, -.46, .29, 1.46), outline .25s cubic-bezier(.71, -.46, .29, 1.46);
+    }
+
+    .el-checkbox__inner::after {
+      left: 3px;
+      top: 0px;
+    }
+
+    &:hover {
+      .el-checkbox__label {
+        color: var(--s-blue-color);
+      }
+
+      .el-checkbox__inner {
+        border-color: var(--s-blue-color);
+      }
+    }
+  }
+
+  .el-input__suffix-inner .el-icon svg {
+    font-size: 1.2em;
+  }
+}

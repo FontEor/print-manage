@@ -1,0 +1,212 @@
+<html lang="zh-CN" translate="no">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="liyankai6">
+  <title>模板转换</title>
+  <!-- <link rel="canonical" href="https://"> -->
+  <meta name="theme-color" content="#712cf9">
+  <style>
+    /* :root {
+      --main-background-color: rgb(240,240,240);
+      --main-color: 606265;
+      --main-shadow: rgb(0, 0, 0);
+    } */
+    :root {
+      --main-background-color: rgb(33, 37, 41);
+      --main-color: white;
+      --main-shadow: rgb(0, 0, 0);
+      --font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    }
+
+    html,
+    body,
+    h1,
+    p,
+    div {
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-family);
+      min-width: 150px;
+      background-color: var(--main-background-color);
+      color: var(--main-color);
+      text-align: center;
+      display: flex;
+      height: 100%;
+      text-shadow: 0 .05rem .1rem rgba(var(--main-shadow), .5);
+      box-shadow: inset 0 0 5rem rgba(var(--main-shadow), .5);
+    }
+
+    .center-flex {
+      flex-direction: column;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: nowrap;
+    }
+
+    .no-select {
+      user-select: none;
+    }
+
+    h1 {
+      font-size: calc(1rem + 1.5vw);
+      margin-top: 0;
+      margin-bottom: 2rem;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    p {
+      font-size: 1.25rem;
+      font-weight: 300;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .error-icon-container svg {
+      height: 8rem;
+      width: 8rem;
+      margin-bottom: 2rem;
+      fill: var(--main-color);
+    }
+
+    @media (min-width: 1200px) {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+
+    .progress .barControl {
+      margin: 0 auto;
+    }
+
+    .progress .barContro_space {
+      margin: 10px 0;
+      background: grey;
+      border-radius: 5px;
+    }
+
+    .progress .vader {
+      height: 30px;
+      border-radius: 2px;
+      display: block;
+      width: 0%;
+      box-shadow: 0px 0px 10px 1px #FD4275, 0 0 1px #FD4275, 0 0 1px #FD4275, 0 0 1px #FD4275, 0 0 1px #FD4275, 0 0 1px #FD4275, 0 0 1px #FD4275;
+      background-color: #fff;
+    }
+
+    .progress .yoda {
+      border-radius: 2px;
+      display: block;
+      width: 0%;
+      box-shadow: 0px 0px 10px 1px #68B37A, 0 0 1px #68B37A, 0 0 1px #68B37A, 0 0 1px #68B37A, 0 0 1px #68B37A, 0 0 1px #68B37A, 0 0 1px #68B37A;
+      background-color: #FFFFFF;
+    }
+
+    .progress .obi {
+      border-radius: 2px;
+      display: block;
+      width: 0%;
+      box-shadow: 0px 0px 10px 1px #3B8CF8, 0 0 1px #3B8CF8, 0 0 1px #3B8CF8, 0 0 1px #3B8CF8, 0 0 1px #3B8CF8, 0 0 1px #3B8CF8, 0 0 1px #3B8CF8;
+      background-color: #fff;
+    }
+
+    .progress .windu {
+      border-radius: 2px;
+      display: block;
+      width: 0%;
+      box-shadow: 0px 0px 10px 1px #AC85B4, 0 0 1px #AC85B4, 0 0 1px #AC85B4, 0 0 1px #AC85B4, 0 0 1px #AC85B4, 0 0 1px #AC85B4, 0 0 1px #AC85B4;
+      background-color: #fff;
+    }
+
+    #progress {
+      transform: translate3d(0px, 0px, 0px);
+      transition: all 60s;
+    }
+
+    .w800 {
+      width: 800px;
+    }
+  </style>
+  <script src="/javascripts/zepto.min.js"></script>
+</head>
+
+<body class="center-flex">
+  <main class="no-select w800">
+    <h1>模板转换中</h1>
+    <p id="msg">此模板来源于旧版编辑器，此次修改需要几分钟将其转换为新版编辑器模板，模板转换中，请稍后...</p>
+    <div class="progress" id="vaderSize">
+      <span class="barControl">
+        <div class="barContro_space">
+          <span id="progress" class="vader" style="width: 0px;" id="barvaderSize"></span>
+        </div>
+      </span>
+    </div>
+    <!-- <p>请通过J-WMS系统的【打印模板管理】菜单访问编辑器 </p> -->
+  </main>
+  <script>
+    function getQuery() {
+      var search = location.search || "";
+      var query = search.split('?')[1];
+      var result = {}
+      if (query) {
+        var queries = query.split('&');
+        for (var index = 0; index < queries.length; index++) {
+          var element = queries[index];
+          if (element) {
+            var qs = element.split('=');
+            result[qs[0]] = qs[1]
+          }
+        }
+      }
+      return result;
+    }
+
+    window.onload = function () {
+      var msg = getQuery().msg;
+      if (msg) {
+        try {
+          msg = decodeURIComponent(msg);
+        } catch (error) { }
+        document.getElementById('msg').innerText = msg;
+      }
+      var $progress = document.getElementById('progress');
+      $progress.style.width = '100%';
+      getDetail();
+    }
+
+    function getDetail() {
+      var query = getQuery();
+      $.ajax({
+        type: "post",
+        url: ["/api/orgs/", query.orgId, "/templates/", query.temId, "/versions/transform"].join(''),
+        success: function (response) {
+          if(response && response.code === 200) {
+            location.replace('/#/transfrom?' + location.search);
+          } else {
+            location.replace('/error-transfrom.html');
+          }
+        },
+        error: function (error) {
+          location.replace('/error-transfrom.html');
+          // swal ( "Oops" ,  "Something went wrong!" ,  "error" )
+        }
+      })
+    }
+  </script>
+</body>
+
+</html>

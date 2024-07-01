@@ -1,0 +1,48 @@
+.choose-system-new {
+  .choose-system-new__content {
+    width: 820px;
+    height: 432px;
+    background: var(--s-choose-system-new-bg);
+    border-radius: 12px;
+    box-shadow:  0 6px 20px 0 var(--s-choose-system-new-shadow);
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: "content content";
+    margin-top: -60px; // 加入了头部的高度
+    > div {
+      height: 100%;
+    }
+    .choose-system-new__left {
+      background: url("../../assets/img/system_left.png") no-repeat center center / contain;
+    }
+    .choose-system-new__right {
+      padding: 102px 40px 0 44px;
+      h3 {
+        margin-bottom: 25px;
+        height: 30px;
+        font-size: 20px;
+        line-height: 30px;
+        font-weight: 600;
+        color: var(--s-text-color-2);
+      }
+      .el-form-item {
+        margin-bottom: 48px;
+      }
+      .el-input__inner {
+        height: 44px;
+        color: var(--s-black-color);
+      }
+      .choose-system-new__link {
+        text-align: right;
+        margin-top: 16px;
+        height: 28px;
+        line-height: 28px;
+        font-size: 16px;
+        .el-link__inner {
+          font-size: 16px;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+}

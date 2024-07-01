@@ -1,0 +1,58 @@
+@import url(var.less);
+.roleTitle {
+  margin-bottom: 1rem;
+}
+.roleDialogForm {
+  width: 60rem;
+  margin-left: -14rem;
+  .roleItem {
+    margin-left: 8rem;
+    .roleInput {
+      width: 100%;
+    }
+  }
+}
+.roleButtonArea {
+  height: 0rem;
+  margin-top: -2rem;
+  position: relative; 
+  &:last-child{
+    .el-button--primary();
+  }
+  .roleButton{
+    right: 4.7rem;
+    bottom: -5rem;
+    margin: 0 .5rem -1rem 0;
+    position: absolute;
+  }
+}
+
+.account-dialog {
+  .el-dialog__body {
+    height: 328px;
+  }
+}
+
+.relation-enum-dialog {
+  .el-radio {
+    width: 100%;
+    margin-right: 0px;
+  }
+  .el-input-group__append button.el-button {
+    background-color: var(--el-button-background-color);
+    color: var(--el-button-font-color);
+    border-color: var(--el-button-border-color);
+    &:hover,
+    &:active {
+      background-color: var(--el-button-hover-bg-color);
+      color: var(--el-button-hover-text-color);
+      border-color: var(--el-button-hover-border-color);
+    }
+  }
+}
+
+.left-footer-buttons {
+  .el-dialog__footer {
+    text-align: end;
+  }
+}

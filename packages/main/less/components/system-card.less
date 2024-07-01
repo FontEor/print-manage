@@ -1,0 +1,106 @@
+.system-card {
+  width: 354px;
+  height: 123px;
+  background: var(--s-card-bg);
+  border: 1px solid var(--s-divider-color);
+  border-radius: 8px;
+  padding: 10px;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  &.active {
+    border-color: var(--s-blue-color);
+  }
+  &.under {
+    .system-card__bottom--under {
+      display: block;
+    }
+  }
+  .system-card__bottom--under {
+    display: none;
+    background: url("../../../main/assets/under-review.svg") no-repeat right bottom;
+    background-size: 58px 58px;
+    position: absolute;
+    right: 4px;
+    bottom: 4px;
+    width: 60px;
+    height: 60px;
+  }
+  .system-card__top {
+    height: 50px;
+    h4 {
+      height: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--s-text-color-2);
+      margin-bottom: 4px;
+      text-align: left;
+      > span {
+        margin-left: 0;
+        width: 180px;
+        strong {
+          color: var(--s-blue-color);
+        }
+      }
+      .el-link {
+        width: 150px;
+        font-size: 12px;
+        line-height: 20px;
+        color: var(--s-text-color-3);
+        justify-content: flex-end;
+        &:hover {
+          color: var(--el-link-hover-text-color);
+        }
+        span {
+          padding-right: 16px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          display: inline-block;
+          position: relative;
+          i {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            margin-top: -6px;
+          }
+        }
+      }
+    }
+    > p {
+      height: 18px;
+      font-size: 12px;
+      line-height: 18px;
+      color: var(--s-text-color-2);
+      text-align: left;
+    }
+  }
+  .divider {
+    height: 4px;
+  }
+  .system-card__bottom {
+    height: 52px;
+    p {
+      margin-top: 4px;
+      height: 20px;
+      font-size: 14px;
+      line-height: 20px;
+      color: var(--s-text-color-3);
+      text-align: left;
+    }
+  }
+  &:hover {
+    border: 1px solid var(--s-blue-boder-color);
+  }
+  .el-link__inner {
+    &:hover {
+      color: var(--s-blue-color);
+    }
+  }
+}
+.under {
+  cursor: not-allowed;
+  &:hover {
+    border: 1px solid var(--s-divider-color);
+  }
+}

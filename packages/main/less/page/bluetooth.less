@@ -1,0 +1,29 @@
+.bluetooth-create-dialog {
+  .el-cascader {
+    --el-input-height: var(--el-component-size);
+    position: relative;
+    font-size: calc(var(--el-font-size-base) + 2);
+    display: inline-flex;
+    width: 100%;
+    line-height: var(--el-input-height);
+    .el-input__inner {
+      min-height: 30px !important;
+    }
+    &.el-cascader--small {
+      ::placeholder {
+        text-indent: 4px;
+      }
+    }
+    ::placeholder {
+      font-size: 14px;
+    }
+  }
+  .el-input-group__append {
+    box-shadow: none;
+    background-color: transparent;
+    color: var(--el-text-color-regular);
+  }
+  .slice-line {
+    text-align: center;
+  }
+}

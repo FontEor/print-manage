@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/font/icon.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>京东云打印管理系统    </title>
+    <link rel="stylesheet" href="/font/icon.css"/>
+    <script src="/env.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/packages/main/main.ts"></script>
+    <script type="text/javascript">
+      if(window.ENV === 'production') {
+        var jaq = jaq || [];
+        jaq.push(['account', 'JA2023_124675']);
+        jaq.push(['domain', 'print.jdl.com']);
+        (function () {
+            var ja = document.createElement('script');
+            ja.type = 'text/javascript';
+            ja.async = true;
+            ja.src = '//wl.jd.com/joya.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ja, s);
+        })()
+      }
+    </script>
+  </body>
+</html>

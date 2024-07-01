@@ -1,0 +1,6 @@
+{
+  "baseUrl": "http://template.jd.com:2000/",
+  "chromeWebSecurity": false,
+  "viewportWidth": 1000,
+  "viewportHeight": 660
+}

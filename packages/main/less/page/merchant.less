@@ -1,0 +1,74 @@
+.merchant-form, .isv-form {
+  .title {
+      font-weight: bold;
+      font-size: 16px;
+      display: flex;
+      margin-bottom: 16px;
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 4px;
+        height: 16px;
+        background: @dialog-content-title-lead-color;
+        margin-right: 4px;
+        border-radius: 2px;
+      }
+    }
+    .item-wrap {
+      display: flex;
+    }
+    .form-item-left {
+      margin-right: 16px;
+    }
+    .el-form-item {
+      display: flex;
+      align-items: center;
+    }
+    .el-form-item__label {
+      padding-right: 8px;
+      line-height: 20px;
+      color: @aside-color;
+      text-align: left;
+    }
+    .el-form-item__content {
+      line-height: 20px;
+      color: @dialog-content-color;
+    }
+
+    .modle-wrap {
+      margin-bottom: 36px;
+    }
+    .item {
+      margin-left: 30px;
+    }
+  
+    .flex {
+      display: flex;
+    }
+  
+    .img-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  
+      .img {
+        border: 1px solid @dialog-border-color;
+        margin: 10px 0;
+        height: 250px;
+        width: 100%;
+        &_left {
+          margin-right: 16px;
+        }
+      }
+    }
+    .flex-1 {
+      flex: 1
+    }
+    .flex-2 {
+      flex: 2;
+    }
+    .img-link {
+      cursor: pointer;
+      color: @active-color;
+    }
+}

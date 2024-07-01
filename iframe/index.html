@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <iframe id="iframe" width="1000" height="800" frameborder="0"></iframe>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>地址</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </div>
+  <script>
+    const map = {
+      "编辑器": "http://template.jd.com:1024/?orgId=58&tempType=1&temId=33&cid=&sourceId=112&verId=9&bT=GWQD&s=JWMS&hasCustom=1&isPublish=1&deliveryCode=JDKD",
+      // "创建模板页面": "http://template.jd.com:2000/#/chooseStandard?orgId=58&tempType=1&temId=33&cId=&sourceId=112&verId=9&bT=GWQD&s=JWMS&hasCustom=1&isPublish=1&deliveryCode=JDKD",
+      "创建模板页面": "http://template.jd.com:2000/#/chooseStandard?orgId=58&tempType=1&temId=&cid=&sourceId=&verId=&bT=GWQD&s=JWMS&hasCustom=1&isPublish=1&deliveryCode=JDKD",
+      "创建自定页面": "http://template.jd.com:2000/#/chooseStandard?orgId=58&tempType=2&temId=33&cid=&sourceId=112&verId=&bT=GWQD&s=JWMS&hasCustom=0&isPublish=1&deliveryCode=JDKD"
+    }
+    const $iframe = document.getElementById('iframe');
+    const $tbody = document.getElementById('tbody')
+    function handleClick(e) {
+      const url = e.target.dataset.url;
+      $iframe.src = url;
+    }
+    function generatorTbody() {
+      $tbody.innerHTML = ""
+      const $fragment = document.createDocumentFragment();
+      for (const [name, url] of Object.entries(map)) {
+        const $tr = document.createElement('tr');
+        console.log('#######', name, url);
+        const $tdFirst = document.createElement('td');
+        const $spanName = document.createElement('span')
+        $spanName.innerText = name;
+        $tdFirst.appendChild($spanName);
+        $tr.appendChild($tdFirst);
+
+        const $tdSecond = document.createElement('td')
+        const $button = document.createElement('button');
+        $button.textContent = '跳转'
+        $button.dataset.url = url;
+        $button.addEventListener('click', handleClick);
+        $tdSecond.appendChild($button);
+        $tr.appendChild($tdSecond);
+        $fragment.appendChild($tr);
+      }
+      $tbody.appendChild($fragment);
+    }
+    function onMessage(e) {
+      $iframe.contentWindow.postMessage(e.data, "http://template.jd.com:2000");
+    }
+    window.onload = function() {
+      document.domain = "jd.com"
+      generatorTbody();
+      window.addEventListener('message', onMessage);
+    }
+  </script>
+</body>
+</html>

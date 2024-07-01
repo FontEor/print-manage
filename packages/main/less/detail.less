@@ -1,0 +1,159 @@
+@import url(var.less);
+@import url(mixin.less);
+
+.detail-container {
+    .detail-container-info-bar {
+        width: 100%;
+        height: 77px;
+        background-color: @main-background-color;
+        border-radius: 4px;
+        margin-top: 9px;
+        box-sizing: border-box;
+        padding: 10px 20px 10px 32px;
+        position: relative;
+        text-align: left;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            width: 4px;
+            height: 45px;
+            background: @active-color;
+            transform: translateY(-50%);
+        }
+
+        h1 {
+            margin-top: 2px;
+            line-height: 26px;
+            position: relative;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 24px;
+            margin-top: 5px;
+        }
+    }
+
+    .detail-container-tab-container {
+        margin-top: 11px;
+        height: calc(100vh - 200px);
+        overflow: hidden;
+        background-color: @main-background-color;
+
+        .el-tabs {
+            box-shadow: none;
+            height: 100%;
+
+            // display: flex;
+            // flex-direction: column;
+            // align-content: center;
+            // align-items: flex-start;
+            // flex-wrap: nowrap;
+            // justify-content: flex-start;
+            .el-tabs__header {
+                width: 100%;
+            }
+
+            .el-tabs__content {
+                width: 100%;
+                height: calc(100vh - 263px);
+                overflow-y: auto;
+            }
+
+            .el-tabs--border-card>.el-tabs__header {
+                background-color: @global-background-color;
+            }
+
+            .el-tabs__item {
+                padding: 0 19px;
+                height: 34px;
+                margin-bottom: 3px;
+                margin-right: 4px;
+                line-height: 37px;
+                text-align: center;
+                background-color: @detail-tab-background-color;
+                border-bottom: 2px solid transparent;
+
+                &.is-active {
+                    background-color: @tab-active-background-color;
+                    border-bottom: 2px solid @detail-tab-background-color;
+                }
+            }
+
+            .el-tab-pane {
+                overflow-y: auto;
+            }
+        }
+
+        .list-container {
+            height: calc(100vh - 295px);
+        }
+    }
+
+    .detail-from {
+        max-width: 756px;
+        min-width: 300px;
+
+        &.detail-form-view {
+
+            .el-input__inner,
+            .el-textarea__inner {
+                border-color: transparent;
+                cursor: text;
+                resize: none;
+            }
+
+            .el-input.is-disabled .el-input__inner,
+            .el-textarea.is-disabled .el-textarea__inner {
+                background-color: var(--el-input-background-color, var(--el-color-white));
+                color: var(--el-input-font-color, var(--el-text-color-regular));
+            }
+
+            .el-form-item__label {
+                &::before {
+                    opacity: 0;
+                }
+            }
+
+            .el-radio-group {
+                .el-radio.is-disabled {
+                    display: none;
+                }
+                .el-radio.is-disabled.is-checked {
+                    display: inline-flex;
+                    .el-radio__label {
+                        color: rgba(96, 98, 102, 0.7);
+                    }
+                }
+            }
+        }
+
+
+        .el-form-item {
+            text-align: left;
+        }
+
+        .detail-form-view-field {
+            .font-family;
+            word-break: break-all;
+            padding: 0 15px;
+            font-size: 13px;
+            color: var(--el-input-font-color, var(--el-text-color-regular));
+        }
+    }
+
+    .el-form {
+        .el-form-item {
+            .el-form-item__label {
+                &::before {
+                    transition: opacity 0.3s;
+                }
+            }
+        }
+    }
+}

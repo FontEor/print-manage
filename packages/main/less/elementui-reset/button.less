@@ -1,0 +1,91 @@
+// 按钮
+//  <el-button type="primary" size="small">测试</el-button>
+//  <el-button type="info">测试</el-button>
+//  <el-button type="primary" plain size="large">测试</el-button>
+//  <el-button>测试</el-button>
+.el-button {
+  font-weight: normal !important;
+  --el-border-radius-base: 8px;
+  --el-button-border-color: var(--s-divider-color);
+  --el-button-text-color: var(--s-black-6);
+  --el-button-hover-text-color: var(--s-black-6) !important;
+  --el-button-hover-bg-color: var(--s-bg-color) !important;
+  --el-button-hover-border-color: var(--s-divider-color) !important;
+  padding: 6px 16px !important;
+  font-size: 14px !important;
+
+  &.is-disabled {
+    color: var(--s-black-bg-color);
+    border-color: var(--s-divider-color);
+  }
+
+  &.el-button--primary {
+    --el-button-hover-bg-color: var(--s-blue-color) !important;
+    --el-button-hover-border-color: var(--s-blue-color) !important;
+    --el-button-border-color: var(--s-blue-color)!important;
+    --el-button-text-color: var(--s-text-color-white)!important;
+    --el-button-hover-text-color: var(--s-text-color-white) !important;
+    --el-button-bg-color: var(--s-blue-6) !important;
+
+    &.is-disabled:not(.is-link) {
+      --el-button-disabled-bg-color: var(--s-blue-boder-color);
+      border-color: var(--s-plain-button-disable-bg);
+      color: var(--s-text-color-white);
+    }
+
+    &.is-plain {
+      border: none;
+      background-color: var(--s-brand-b-color-alpha);
+      color: var(--s-blue-6);
+
+      &:hover {
+        background-color: var(--s-blue-6);
+        color: var(--s-text-color-white);
+      }
+
+      &.is-disabled {
+        background-color: var(--s-brand-b-color-alpha);
+      }
+    }
+  }
+
+  &.el-button--info {
+    --el-button-bg-color: var(--s-bg-color);
+    --el-button-border-color: var(--s-bg-color);
+    --el-button-text-color: var(--s-black-6);
+    --el-button-hover-text-color: var(--s-blue-6) !important;
+    --el-button-hover-bg-color: var(--s-blue-shadow-color) !important;
+    --el-button-hover-border-color: transparent !important;
+
+    &.is-disabled {
+      background-color: var(--s-bg-color);
+      color: var(--s-black-bg-color);
+      border-color: var(--s-bg-color);
+    }
+    &:active {
+      --el-button-active-bg-color: var(--s-blue-shadow-color) !important;
+      --el-button-active-border-color: transparent !important;
+    }
+  }
+
+  &.el-button--small {
+    padding: 4px 16px !important;
+    font-size: 14px !important;
+  }
+
+  &.el-button--large {
+    padding: 10px 16px !important;
+    font-size: 14px !important;
+  }
+  &.el-button--big {
+    padding: 24px 16px !important;
+    font-size: 18px !important;
+  }
+  // link
+  &.is-link {
+    color: var(--s-blue-6);
+    &:hover {
+      color: var(--s-blue-boder-color);
+    }
+  }
+}

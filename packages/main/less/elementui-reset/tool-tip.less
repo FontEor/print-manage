@@ -1,0 +1,13 @@
+.el-popper {
+  --el-popper-border-radius: 8px;
+  padding: 8px 16px;
+  &.is-dark {
+    // TODO: 黑色透明度90%在色卡上没有
+    --el-text-color-primary: fade(#23252B, 90%);
+    box-shadow: 0 2px 12px 0 var(--s-black-shadow-color);
+  }
+  &.is-light {
+    box-shadow: 0 2px 12px 0 var(--s-black-shadow-color);
+    color: var(--f-light-title);
+  }
+}

@@ -1,0 +1,261 @@
+:root {
+  // 色卡
+  //蓝色
+  --s-blue-1: #EBF0FD;
+  --s-blue-2: #C8D6FA;
+  --s-blue-3: #C8D6FA;
+  --s-blue-4: #82A2F5;
+  --s-blue-5: #5F88F2;
+  --s-blue-6: #3C6EF0;
+  --s-blue-7: #315AC4;
+  --s-blue-8: #264699;
+  --s-blue-9: #1B326E;
+  --s-blue-10: #101E42;
+  //红色
+  --s-red-1: #FEEBEB;
+  --s-red-2: #FEC7C7;
+  --s-red-3: #FDA3A3;
+  --s-red-4: #FD7F7F;
+  --s-red-5: #FC5B5B;
+  --s-red-6: #FC3737;
+  --s-red-7: #CE2D2D;
+  --s-red-8: #A12323;
+  --s-red-9: #731919;
+  --s-red-10: #460F0F;
+  //橙色
+  --s-orange-1: #FFF1E6;
+  --s-orange-2: #FFD9B8;
+  --s-orange-3: #FFC08A;
+  --s-orange-4: #FFA85C;
+  --s-orange-5: #FF8F2E;
+  --s-orange-6: #FF7700;
+  --s-orange-7: #D16100;
+  --s-orange-8: #A34C00;
+  --s-orange-9: #753600;
+  --s-orange-10: #472100;
+  //黄色
+  --s-yellow-1: #FFF7E6;
+  --s-yellow-2: #FFEAB8;
+  --s-yellow-3: #FFDD8A;
+  --s-yellow-4: #FFD05C;
+  --s-yellow-5: #FFC32E;
+  --s-yellow-6: #FFB700;
+  --s-yellow-7: #D19500;
+  --s-yellow-8: #A37400;
+  --s-yellow-9: #755300;
+  --s-yellow-10: #473200;
+
+  // 青色
+  --s-cyan-1: #E7FAFA;
+  --s-cyan-2: #BCF3F1;
+  --s-cyan-3: #91ECE9;
+  --s-cyan-4: #66E4E0;
+  --s-cyan-5: #3BDDD8;
+  --s-cyan-6: #11D6D0;
+  --s-cyan-7: #0DAFAA;
+  --s-cyan-8: #0A8884;
+  --s-cyan-9: #07625F;
+  --s-cyan-10: #043B39;
+  // 绿色
+  --s-green-1: #E7F7EF;
+  --s-green-2: #BDE9D1;
+  --s-green-3: #92DCB4;
+  --s-green-4: #67CE97;
+  --s-green-5: #3CC07A;
+  --s-green-6: #12B35D;
+  --s-green-7: #0E924C;
+  --s-green-8: #0B723B;
+  --s-green-9: #08522A;
+  --s-green-10: #053119;
+  // 紫色
+  --s-purple-1: #F4ECFC;
+  --s-purple-2: #E0CBF8;
+  --s-purple-3: #CCA9F3;
+  --s-purple-4: #B888EF;
+  --s-purple-5: #A466EA;
+  --s-purple-6: #9045E6;
+  --s-purple-7: #7638BC;
+  --s-purple-8: #5C2C93;
+  --s-purple-9: #421F69;
+  --s-purple-10: #281340;
+  // 粉色
+  --s-pink-1: #FEEDF3;
+  --s-pink-2: #FDCDDF;
+  --s-pink-3: #FDACCA;
+  --s-pink-4: #FC8CB6;
+  --s-pink-5: #FB6CA1;
+  --s-pink-6: #FB4C8D;
+  --s-pink-7: #CD3E73;
+  --s-pink-8: #A0305A;
+  --s-pink-9: #732240;
+  --s-pink-10: #451527;
+  // 黑色
+  --s-black-1: #EAEAEA;
+  --s-black-2: #C1C2C3;
+  --s-black-3: #9A9A9D;
+  --s-black-4: #727377;
+  --s-black-5: #4A4C51;
+  --s-black-6: #23252B;
+  --s-black-7: #1C1E23;
+  --s-black-8: #16171B;
+  --s-black-9: #101013;
+  --s-black-10: #090A0B;
+  // 色彩/彩色色阶
+  // 主色调
+  --s-brand-b-color: #5886FC;
+  --s-brand-b-sub-color: #FB4C8D;
+  --s-brand-c-color: #FC3737;
+  --s-warning-color: #FF7700;
+  --s-tooltip-color: #12B35D;
+  // 主色调透明
+  --s-brand-b-color-alpha: fade(#3C6EF0, 10%);
+  --s-brand-b-sub-color-alpha: fade(#FB4C8D, 10%);
+  --s-brand-c-color-alpha: fade(#FC3737, 10%);
+  --s-warning-color-alpha: fade(#FF7700, 10%);
+  --s-tooltip-color-alpha: fade(#12B35D, 10%);
+  --s-border-color-alpha:fade(#3C6EF0, 15%);
+  // 色彩/灰色色阶
+  // 文字 由重要到不重要
+  --s-text-color-1: #23252B; // 一级重要信息，用于标题文字、关键功能操作入口、表头标题
+  --s-text-color-2: #525765; // 二级次要信息，用于段落、列表内容等
+  --s-text-color-3: #868D9F; // 用于辅助信息，如提示说明文字
+  --s-text-color-4: #BABEC7; // 非重要信息，如输入框默认提示说明文字、引导文案、最弱一级文字
+  // 主背景色调
+  --s-bg-color: #F5F5F6; // 用于页面整体背景、文本域背景、选择按钮背景/白色背景下的hover色值
+  --s-bg-weak-color: #FAFAFB; // 弱背景，用于表格斑马纹背景
+  // 分割线
+  --s-divider-color: #E4E5E9; // 强分割线，用于强分割线色值；灰背景色的按钮底色/hover色值
+  --s-divider-weak-color: #F1F2F4; // 弱分割线，用于表格内分割线
+  // 渐变色
+  --s-linear-blue-l: #82A2F5;
+  --s-linear-blue-d: #3C6EF0;
+  --s-linear-red-l: #FD7F7F;
+  --s-linear-red-d: #FC3737;
+  --s-linear-orange-l: #FFA85C;
+  --s-linear-orange-d: #FF7700;
+  --s-linear-yellow-l: #FFD05C;
+  --s-linear-yellow-d: #FFB700;
+  --s-linear-green-l: #67CE97;
+  --s-linear-green-d: #32BD6E;
+  --s-linear-cyan-l: #66E4E0;
+  --s-linear-cyan-d: #0ADFD9;
+  --s-linear-purple-l: #B888EF;
+  --s-linear-purple-d: #9045E6;
+  --s-linear-pink-l: #FC8CB6;
+  --s-linear-pink-d: #FB4C8D;
+  --s-linear-black-l: #727377;
+  --s-linear-black-d: #23252B;
+
+  // 辅助色调
+  --s-blue-color: #3C6EF0;
+  --s-red-color: #FC3737;
+  --s-orange-color: #FF7700;
+  --s-yellow-color: #FFB700;
+  --s-green-color: #12B35D;
+  --s-cyan-color: #11D6D0;
+  --s-purple-color: #9045E6;
+  --s-pink-color: #FB4C8D;
+  --s-black-color: #23252B;
+
+  // 浅色描边/底色
+  --s-blue-boder-color: fade(#3C6EF0, 50%);
+  --s-blue-shadow-color: fade(#3C6EF0, 10%);
+  --s-red-boder-color: fade(#FC3737, 50%);
+  --s-red-shadow-color: fade(#FC3737, 10%);
+  --s-orange-boder-color: fade(#FF7700, 50%);
+  --s-orange-shadow-color: fade(#FF7700, 10%);
+  --s-yellow-boder-color: fade(#FFB700, 50%);
+  --s-yellow-shadow-color: fade(#FFB700, 10%);
+  --s-green-boder-color: fade(#12B35D, 50%);
+  --s-green-shadow-color: fade(#12B35D, 10%);
+  --s-cyan-boder-color: fade(#11D6D0, 50%);
+  --s-cyan-shadow-color: fade(#11D6D0, 10%);
+  --s-purple-boder-color: fade(#9045E6, 50%);
+  --s-purple-shadow-color: fade(#9045E6, 10%);
+  --s-pink-boder-color: fade(#FB4C8D, 50%);
+  --s-pink-shadow-color: fade(#FB4C8D, 10%);
+  --s-black-bg-color: fade(#23252B, 50%);
+  --s-black-shadow-color: fade(#23252B, 10%);
+  --s-black-boder-color: fade(#23252B, 10%);
+
+  // 字体
+  --f-light-title: #23252B;
+  --f-light-primary: #525765;
+  --f-light-secondary: #868D9F;
+  --f-light-comments: #BABEC7;
+  --f-light-disable: #BABEC7;
+  --f-light-divider: #E4E5E9;
+  --f-light-background: #FAFAFB;
+
+  // 禁用
+  --s-color-disabled: #BABEC7;
+
+  // header
+  --s-header-bg-color: #FFFFFF;
+
+  // main
+  --s-main-bg-color: #FFFFFF;
+
+  // 遮罩
+  --s-mask-bg-color: fade(#23252b, 50%);
+
+  // 标签页面
+  --s-tab-active-bg-color: #FFFFFF;
+
+  // 表单
+  --s-input-active-bg-color: #FFFFFF;
+
+  // card
+  --s-card-border-color: #D6DBF3;
+
+  // 表单输入报错
+  --s-form-error-hover-color: fade(#E1251B, 10%);
+  // 模板管理-版本管理-卡片边框
+  --s-border-color: #DCDCDC; 
+  // 模板管理-版本管理-底部遮罩
+  --s-mark-bg-color: fade(#182546, 60%);
+  --s-arrow-no-more-bg-color: fade(#23252b, 25%);
+  // 文字颜色
+  --s-text-color-white: #FFFFFF;
+  --s-tooltip-bg: fade(#FFFFFF, 90%);
+  // dop-down阴影
+  --s-dop-down-shadow-color: fade(#000000, 10%);
+  // plain类型按钮禁用背景
+  --s-plain-button-disable-bg: fade(#3C6EF0, 8%);
+  // popper dark 背景色
+  --s-popper-dark-bg: fade(#23252B, 90%);
+  // 单选按钮选中禁用状态颜色
+  --s-radio-checked-disabled: fade(#BABEC7, 50%);
+
+  // 级联+号hover后tags背景色
+  --s-cascader-tips-tag: #F5F5F6;
+  // 关闭标签icon颜色
+  --s-cascader-tag-close-font: #525765;
+  --s-cascader-tag-close-hover: #BABEC7;
+  --s-cascader-tag-close: fade(#BABEC7, 50%);
+  --s-cascader-tag-close-font-hover: fade(#FFFFFF, 50%);
+  --s-cascader-tag-close-text: #FFFFFF;
+
+  // 表格hover颜色
+  --s-table-column-hover: #F5F5F6;
+  // 二级以下表格颜色
+  --s-table-column-sub: #F1F4F9;
+
+  // message-box
+  --s-messagebox-color-warning: #FF7700;
+
+  // chat icon
+  --s-chat-icon-color: #8D929E;
+
+  // copy icon
+  --s-copy-icon-color: #868D9F;
+
+  --s-card-bg: white;
+
+  --s-action-button-hover: fade(#3C6EF0, 80%);
+
+  --s-choose-system-new-bg: #FFFFFF;
+  --s-choose-system-new-shadow: fade(#252C40, 12%);
+  
+  --s-tag-hover-bg: #F1F2F4;
+}

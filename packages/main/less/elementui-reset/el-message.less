@@ -1,0 +1,45 @@
+// el-message 样式修改
+.el-message {
+  border-radius: 8px;
+  padding: 6px 16px !important;
+
+  &.el-message--success {
+    --el-message-border-color: var(--s-green-2);
+    --el-message-bg-color: var(--s-green-1);
+
+    .el-message-icon--success {
+      color: var(--s-green-6);
+    }
+  }
+
+  &.el-message--warning {
+    --el-message-border-color: var(--s-orange-2);
+    --el-message-bg-color: var(--s-orange-1);
+
+    .el-message-icon--warning {
+      color: var(--s-warning-color);
+    }
+  }
+
+  &.el-message--error {
+    --el-message-border-color: var(--s-red-2);
+    --el-message-bg-color: var(--s-red-1);
+
+    .el-message-icon--error {
+      color: var(--s-red-6);
+    }
+  }
+
+  &.el-message--info {
+    --el-message-border-color: var(--s-black-2);
+    --el-message-bg-color: var(--s-black-1);
+
+    .el-message-icon--info {
+      color: var(--s-black-6);
+    }
+  }
+
+  .el-message__content {
+    color: var(--s-text-color-2) !important;
+  }
+}

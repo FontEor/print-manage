@@ -1,0 +1,133 @@
+.choose-system {
+  .login-index {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background: #3c6ef0 url("../../assets/views/chooseSystem/background.jpeg") no-repeat center 80%;
+    background-size: cover;
+
+    .el-select {
+      width: 100%;
+    }
+
+    .con-box {
+      flex: 1;
+      position: relative;
+      margin: 0 auto 136px;
+      width: 1200px;
+    }
+
+    .login-head {
+      position: relative;
+      z-index: 10;
+      height: 80px;
+      background-color: #3c6ef0;
+
+      .head-con {
+        margin: auto;
+        width: 1200px;
+        height: 100%;
+      }
+
+      .logo {
+        width: 450px;
+        height: 100%;
+        background: url("../../assets/img/header/jdl_logo.png") no-repeat left center;
+        background-size: 240px 40px;
+        color: white;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 78px;
+        text-align: right;
+      }
+    }
+
+    .con-left {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-60%);
+      width: 570px;
+      height: 440px;
+      background: url("../../assets/views/chooseSystem/backgroun-icon.png") no-repeat;
+      background-size: contain;
+    }
+
+    .logo-form {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      padding: 35px 35px 50px;
+      width: 460px;
+      margin-top: -180px;
+      min-height: 250px;
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.09);
+      z-index: 999;
+
+      .warning-info {
+        position: absolute;
+        top: -56px;
+        left: 0;
+        width: 100%;
+        padding-left: 10px;
+        height: 54px;
+        line-height: 24px;
+        font-size: 14px;
+        color: #f4821f;
+        background: rgba(253, 242, 232, 1);
+        border: 1px solid rgba(251, 219, 191, 1);
+        border-radius: 4px;
+        z-index: 999;
+
+        .el-icon-warning {
+          margin-right: 10px;
+          color: #f4821f;
+          font-size: 18px;
+        }
+
+        .el-icon-close {
+          color: #9c9c9c;
+          cursor: pointer;
+          width: 32px;
+          height: 32px;
+          text-align: center;
+          line-height: 32px;
+        }
+      }
+
+      .title {
+        padding-bottom: 30px;
+        font-size: 22px;
+        color: #323232;
+        font-weight: 700;
+      }
+
+      .create {
+        padding-top: 8px;
+        // margin-bottom: 50px;
+        text-align: right;
+      }
+
+      .el-button--primary {
+        margin-left: 0;
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 16px;
+        color: #fff;
+        background: linear-gradient(45deg,
+            rgba(60, 110, 240, 1) 0%,
+            rgba(65, 138, 255, 1) 100%);
+        border-radius: 2px;
+
+        &:hover {
+          background: linear-gradient(45deg,
+              rgba(65, 138, 255, 1) 0%,
+              rgba(60, 110, 240, 1) 100%);
+        }
+      }
+    }
+  }
+}

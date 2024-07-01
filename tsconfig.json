@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "target": "ESnext",
+    "useDefineForClassFields": true,
+    "module": "ESnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "noEmit": true,
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "lib": ["esnext", "dom"],
+    "isolatedModules": false,
+    "paths": {
+      "@": ["packages/main"],
+      "@/*": [
+          "packages/main/*"
+      ],
+    },
+    "typeRoots": [
+      "./packages/types/**/*"
+    ],
+    "types": ["lodash", "@types/jest"],
+    "skipLibCheck": true
+  },
+  "include": [
+    "packages/**/*.ts",
+    "packages/env.d.ts",
+    "packages/wang-editor.d.ts",
+    "packages/**/*.vue",
+  ],
+  "exclude": ["./node_modules", "./node_modules/element-plus", "./node_modules/@types/element-plus"]
+}

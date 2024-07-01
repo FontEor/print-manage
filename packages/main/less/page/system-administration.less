@@ -1,0 +1,18 @@
+.system-admin-create {
+  .members-multiple {
+    text-align: left;
+    .el-select-tags-wrapper {
+      .el-tag--info {
+        &:hover {
+          color: @active-color;
+        }
+        background-color: var(--s-tag-hover-bg) !important;
+      }
+    }
+    &:hover {
+      .el-tag--info:last-of-type {
+        background-color: var(--s-tag-hover-bg) !important;
+      }
+    }
+  }
+}

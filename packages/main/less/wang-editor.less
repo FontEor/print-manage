@@ -1,0 +1,28 @@
+@import url("@wangeditor/editor/dist/css/style.css");
+.wang-editor-style {
+  padding: 1px;
+  border: var(--el-border);
+  border-color: var(--el-border-color);
+  border-radius: var(--el-border-radius-base);
+  &:hover {
+    border-color: var(--el-border-color-hover);
+  }
+  &:focus {
+    border-color: var(--el-color-primary);
+  }
+}
+.el-form-item.is-error {
+  .wang-editor-style {
+    box-shadow: 0 0 0 1px var(--el-color-danger) inset;
+    border-color: transparent;
+  }
+}
+
+.wang-editor-style {
+  .bold {
+    font-weight: bolder;
+  }
+  .italic {
+    font-style: italic;
+  }
+}

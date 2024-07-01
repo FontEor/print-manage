@@ -1,0 +1,96 @@
+.apply-join-system-dialog {
+  --el-button-disabled-bg-color: var(--el-color-primary-light-5) !important;
+  --el-button-disabled-border-color: var(--el-color-primary-light-5) !important;;
+  padding-bottom: 0 !important;
+  .el-dialog__header {
+    padding: 8px 0 8px 24px;
+  }
+  .apply-join-system-dialog__header {
+    padding-right: 52px;
+    p {
+      color: var(--s-text-color-1);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 22px;
+    }
+  }
+  .el-dialog__body {
+    padding: 8px 24px 0 24px;
+  }
+  .apply-join-system-dialog__content {
+    height: 450px;
+    margin-bottom: 20px;
+    .el-alert__title {
+      //font-size: inherit;
+      //color: inherit;
+      a {
+        font-size: 14px;
+        font-weight: normal;
+        vertical-align: baseline;
+        i {
+          margin-left: 6px;
+          font-size: 14px;
+          color: var(--s-chat-icon-color);
+        }
+        &:hover {
+          i {
+            color: var(--el-link-hover-text-color)
+          }
+        }
+      }
+    }
+    .apply-join-system-dialog__alert {
+      height: 32px;
+      font-size: 14px;
+      line-height: 16px;
+      color: var(--s-text-color-2);
+      padding-left: 0;
+      background-color: white;
+      margin-bottom: 8px;
+      i {
+        font-size: 16px;
+        color: var(--s-warning-color);
+      }
+      .el-link__inner {
+        &:hover {
+          color: var(--s-blue-color);
+        }
+      }
+    }
+    > h4 {
+      font-size: 14px;
+      line-height: 20px;
+      height: 20px;
+      color: var(--s-text-color-1);
+      text-align: left;
+      margin-bottom: 12px;
+      span {
+        margin-left: 16px;
+        color: var(--s-text-color-3);
+      }
+    }
+    .apply-join-system-dialog__cards {
+      overflow: hidden auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-direction: row;
+      .system-card {
+        margin-bottom: 12px;
+      }
+    }
+  }
+
+  .apply-join-system-dialog__footer {
+    color: var(--s-text-color-2);
+    font-size: 14px;
+    line-height: 20px;
+    .el-form-item {
+      margin-bottom: 0;
+    }
+    .el-button {
+      min-width: 72px;
+    }
+  }
+}

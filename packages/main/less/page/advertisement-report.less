@@ -1,0 +1,73 @@
+.advertisement-report-list {
+  .adjustment-search-form-wrap {
+    border-radius: 8px 0 8px 0;
+    margin-bottom: 0;
+    padding-top: 24px;
+  }
+  .template-list-content {
+    padding-top: 0;
+  }
+  .report-info {
+    font-weight: 500;
+    .report-title {
+      line-height: 52px;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--s-black-6);
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-right: 12px;
+  
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 3px;
+        height: 20px;
+        border-radius: 3px;
+        background-color: var(--s-blue-6);
+        margin-right: 8px;
+      }
+    }
+    
+    .report-action {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .report-content-level1 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      
+      .report-content-item {
+        text-align: start;
+        margin-left: 24px;
+        line-height: 48px;
+        .content-item-label {
+          display: inline-block;
+        }
+        .content-item-value {
+          display: inline-block;
+        }
+      }
+    }
+
+    .report-content-level2 {
+      font-size: 14px;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      .report-content-item {
+        text-align: start;
+        margin-left: 24px;
+        line-height: 48px;
+        .content-item-label {
+          display: inline-block;
+        }
+        .content-item-value {
+          display: inline-block;
+        }
+      }
+    }
+  }
+}

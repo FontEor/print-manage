@@ -1,0 +1,46 @@
+
+.el-date-editor.el-date-editor--daterange.el-input__wrapper,
+.el-date-editor.el-date-editor--datetimerange.el-input__wrapper {
+  --el-input-bg-color: var(--s-bg-color);
+  --el-input-border-color: transparent;
+  --el-input-hover-border-color: var(--s-blue-shadow-color);
+  --el-input-border-radius: 8px;
+  --el-text-color-regular: var(--s-text-color-1);
+  --el-input-text-color: var(--s-text-color-3);
+
+  &:hover {
+    --el-input-bg-color: var(--s-input-active-bg-color);
+    box-shadow:
+      0 0 0 3px var(--el-input-hover-border-color) inset,
+      0 0 0 3px var(--el-input-hover-border-color) !important;
+    border-color: var(--s-blue-color);
+  }
+  &.is-active {
+    --el-input-bg-color: var(--s-input-active-bg-color);
+    border-color: var(--s-blue-color) !important;
+    box-shadow: 0 0 0 3px var(--s-blue-shadow-color) !important;
+    .el-range-input {
+      --el-input-text-color: var(--s-text-color-1);
+    }
+  }
+}
+
+.el-date-editor {
+  &.el-range-editor.el-input__wrapper {
+    padding-right: 28px;
+    .el-range__icon {
+      position: absolute;
+      right: 8px;
+      .font-icon();
+      svg {
+        display: none;
+      }
+      &:before {
+        content: "\e951";
+      }
+    }
+    .el-range-input {
+      color: var(--el-input-text-color,var(--el-text-color-regular));
+    }
+  }
+}

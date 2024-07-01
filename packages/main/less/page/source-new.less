@@ -1,0 +1,168 @@
+.source-new-property {
+  width: 100%;
+  flex: 1;
+  padding-top: 9px;
+
+  // 工具栏
+  .source-list-tools {
+    width: 100%;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    justify-content: space-between;
+    .source-list-tools-left {
+      .enums-manage-button {
+        .secondary-button()
+      }
+    }
+    .source-list-tools-right {
+      .tools-right-search {
+        width: 356px;
+      }
+    }
+  }
+  // 列表页
+  .source-list-content {
+    width: 100%;
+    flex: 1;
+    .el-table {
+      .cell {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        max-height: 3em;
+        padding: 2px 24px 0 24px;
+        .el-table__expand-icon, .el-table__placeholder {
+          display: none;
+        }
+        .source-expand-icon {
+          display: inline-block;
+          .source-icon() {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            display: inline-block;
+            vertical-align: middle;
+            cursor: pointer;
+            background-size: cover;
+          }
+          .source-icon-none {
+            .source-icon()
+          }
+          .source-icon-increase {
+            .source-icon();
+            background-image: url('../../assets/img/source/Lui-icon-increase.png');
+          }
+          .source-icon-minus {
+            .source-icon;
+            background-image: url('../../assets/img/source/Lui-icon-minus-square.png');
+          }
+          i {
+            vertical-align: middle;
+          }
+        }
+      }
+      .el-table__row--level-1 + .el-table__row--level-2 {
+        .el-table__cell {
+          &:nth-child(1) {
+            border-radius: 8px 0 0 0 ;
+          }
+          &:last-child {
+            border-radius: 0 8px 0  0;
+          }
+        }
+      }
+      .el-table__row:not(.el-table__row--level-0, .el-table__row--level-1 ) {
+        &:has( +.el-table__row--level-1, + .el-table__row--level-1 ) {
+          .el-table__cell {
+            &:nth-child(1) {
+              border-radius: 0 0 0 8px ;
+            }
+            &:last-child {
+              border-radius: 0 0 8px  0;
+            }
+          }
+        }
+      }
+      
+      
+
+      // 表格三级及以下特殊颜色标识
+      .el-table__row:not(.el-table__row--level-0, .el-table__row--level-1 ) {
+        .el-table__cell {
+          border-color: var(--s-table-column-sub);
+          background-color: var(--s-table-column-sub);
+        }
+      }
+      // 强制命中hover颜色
+      .hover-row {
+        .el-table__cell {
+          &:nth-child(1) {
+            border-radius: 8px 0 0 8px ;
+          }
+          &:last-child {
+            border-radius: 0 8px 8px  0;
+          }
+          background-color: var(--s-table-column-hover) !important;
+        }
+      } 
+    }
+    .el-table {
+      .action-cell {
+        .cell {
+          padding: 0 24px;
+        }
+      }
+      .action-cell:not(.is-leaf) {
+        .cell {
+          padding: 0;
+          .action-button-list {
+            padding: 0 16px;
+            .el-button {
+              border: none;
+              padding: 6px 8px !important;
+            }
+            .el-button+.el-button  {
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  .none-foucus-button {
+    &:focus {
+      color: var(--s-blue-6) ;
+    }
+    
+  }
+}
+.action-close-searh {
+  .adjustment-search-form-wrap {
+    .search-buttons {
+      flex: 1;
+      min-width: 156px;
+    }
+  }
+
+  .el-table__row {
+    &:hover {
+      .el-table__cell {
+        &:nth-child(1) {
+          border-radius: 8px 0 0 8px ;
+        }
+        &:last-child {
+          border-radius: 0 8px 8px  0;
+        }
+        background-color: var(--s-table-column-hover) !important;
+      }
+    }
+  }
+
+  .source-new-link {
+    &:hover {
+      color: var(--s-action-button-hover) ;
+    }
+  }
+}

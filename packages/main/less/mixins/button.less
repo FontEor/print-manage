@@ -1,0 +1,23 @@
+// 按钮公共样式
+
+// 主要按钮
+.main-button () {
+  
+}
+// 次要按钮
+.secondary-button() {
+  color: var(--s-button-secondary--main-text);
+  border: none;
+  border-radius: 8px;
+  background-color: var(--s-button-secondary--main-color);
+  &:hover {
+    color: var(--s-button-secondary--hover-text);
+    border-radius: 8px;
+    background-color: var(--s-button-secondary--hover-color);
+  }
+  &:disabled {
+    color: var(--s-button-secondary--disable-text);
+    border-radius: 8px;
+    background-color: var(--s-button-secondary--disable-color);
+  }
+}

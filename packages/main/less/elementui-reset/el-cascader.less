@@ -1,0 +1,25 @@
+// cascader tootips下的样式
+.el-cascader__collapse-tags {
+  .el-cascader__collapse-tag {
+    .el-tag {
+      background-color: var(--s-cascader-tips-tag);
+      border-radius: 6px;
+    }
+    .el-tag__close {
+      background-color:transparent;
+      svg {
+        path {
+          color: var(--s-cascader-tag-close-font);
+        }
+      }
+      &:hover {
+        background-color: var(--s-cascader-tag-close-hover);
+        svg {
+          path {
+            color: var(--s-cascader-tag-close-font-hover);
+          }
+        }
+      }
+    }
+  }
+}

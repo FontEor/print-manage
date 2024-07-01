@@ -1,0 +1,25 @@
+.success-dialog {
+  .el-dialog__body {
+    position: relative;
+    padding: 0;
+    .success-dialog-content {
+      padding: 48px 24px;
+      .success-icon {
+        padding-bottom: 16px;
+      }
+    }
+    .success-dialog-close {
+      top: 16px;
+      right: 16px;
+      position: absolute !important;
+      display: inline-block;
+      &:hover {
+        color: @button-hover-color;
+        cursor: pointer;
+      }
+    }
+  }
+  .el-dialog__footer {
+    text-align: end;
+  }
+}

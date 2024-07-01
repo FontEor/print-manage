@@ -1,0 +1,1 @@
+var VITE_APP_ERP = "test.ssa.jd.com/sso/"

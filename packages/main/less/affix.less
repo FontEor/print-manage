@@ -1,0 +1,64 @@
+@import url(var.less);
+.affix-right-container {
+  position: absolute;
+  right: 0;
+  top: 150px;
+  width: 16px;
+  height: 50px;
+  z-index: 98;
+  .affix-right-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    background-color: @button-primary-main-color;
+    border-radius: 5px 0 0 5px;
+    box-shadow: 0 0 2px @button-primary-main-color;
+    &::before {
+      content: " ";
+      position: absolute;
+      right: 4px;
+      top: 50%;
+      margin-top: -5px;
+      width: 0;
+      height: 0;
+      border: 5px solid transparent;
+      border-right-color: white;
+    }
+    &:hover {
+      background-color: @button-hover-color;
+    }
+  }
+  .affix-right-content {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    z-index: 99;
+    display: flex;
+    justify-content: flex-end;
+    width: 0;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    transform: translate(80px, 2px);
+  }
+  .loop(@i) when (@i < 8) {
+    .affix-right-content:nth-of-type(@{i}) {
+      transition: transform @i * 0.2s;
+    }
+    .loop((@i + 1));
+  }
+  .loop(0);
+  &.active {
+    .loop(@i) when (@i < 8) {
+      .affix-right-content:nth-of-type(@{i}) {
+        transform: translate(((@i - 1) * -60px) + 20px, 2px);
+      }
+      .loop((@i + 1));
+    }
+    .loop(0);
+  }
+}

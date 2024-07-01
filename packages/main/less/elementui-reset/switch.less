@@ -1,0 +1,21 @@
+.el-switch {
+  --el-switch-on-color: var(--s-blue-6);
+  --el-switch-off-color: var(--f-light-divider);
+  .el-switch__core {
+    width: 48px;
+    height: 24px;
+    border-color: transparent !important;
+    border-radius: 14px;
+  }
+
+  .el-switch__action {
+    width: 20px;
+    height: 20px;
+  }
+
+  &.is-checked {
+    .el-switch__action {
+      left: calc(100% - 21px) !important;
+    }
+  }
+}

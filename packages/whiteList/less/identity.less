@@ -1,0 +1,102 @@
+.white-list-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fff;
+  padding-bottom: 30px;
+  .white-list-title {
+    padding: 50px 0 70px 0;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 44px;
+    text-align: center;
+    span {
+      padding-bottom: 16px;
+    }
+  }
+  .white-list-container {
+    width: 600px;
+    margin: 0 auto;
+  }
+  .white-list-message {
+    margin-bottom: 30px;
+    text-align: left;
+    p {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+  .el-card {
+    margin-bottom: 30px;
+    box-shadow: none;
+    .card-header {
+      font-weight: bolder;
+      font-size: 20px;
+    }
+  }
+  .el-alert {
+    .el-alert__description {
+      font-size: 14px;
+      line-height: 16px;
+      text-align: left;
+    }
+    .el-link {
+      vertical-align: baseline;
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+  // 重置禁用样式
+  //.el-form {
+  //  .el-input.is-disabled .el-input__wrapper {
+  //    background-color: var(--el-input-bg-color,var(--el-fill-color-blank));
+  //    .el-input__inner {
+  //      color: var(--el-input-text-color,var(--el-text-color-regular));
+  //      -webkit-text-fill-color: var(--el-input-text-color,var(--el-text-color-regular));
+  //      cursor: text;
+  //    }
+  //  }
+  //}
+}
+
+
+.white-list-list {
+  .el-card {
+    margin-bottom: 30px;
+    box-shadow: none;
+    .el-card__header {
+      text-align: left;
+      position: relative;
+      color: white;
+      background-color: #3c6ef0;
+      font-size: 20px;
+      font-weight: 600;
+      padding: 12px 10px;
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .el-button {
+        color: white;
+        font-size: 17px;
+        font-weight: 700;
+        &:hover, &:active, &:focus {
+          background-color: #3c6ef0;
+        }
+        &:active {
+          background-color: lighten(#3c6ef0, 5%);
+        }
+      }
+    }
+    .el-card__body {
+      padding: 0;
+      height: 500px;
+    }
+    .el-table .warning-row {
+      --el-table-tr-bg-color: var(--el-color-warning-light-9);
+    }
+    .el-table .success-row {
+      --el-table-tr-bg-color: var(--el-color-success-light-9);
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+    "editor.tabSize": 2,
+    "git.enableSmartCommit": true,
+    "[vue]": {
+        "editor.defaultFormatter": "Wscats.vue"
+    },
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "[less]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    },
+    "editor.codeActionsOnSave": {
+    
+    },
+    "todohighlight.isEnable": true,
+    "todohighlight.isCaseSensitive": true,
+    "todohighlight.keywords": [
+        {
+            "text": "LINK",
+            "backgroundColor": "skyblue",
+        },
+        {
+            "text": "SEE",
+        },
+        {
+            "text": "TODO",
+            "color": "white",
+            "backgroundColor": "red"
+        },
+        {
+            "text": "Look:",
+            "color": "black",
+            "backgroundColor": "skyblue",
+            "overviewRulerColor": "grey"
+        },
+    ],
+    "todohighlight.defaultStyle": {
+        "color": "black",
+        "backgroundColor": "#edefda",
+        "overviewRulerColor": "#edefda",
+        "cursor": "pointer",
+        "border": "1px solid #eee",
+        "borderRadius": "2px",
+        "isWholeLine": true,
+    },
+    "todohighlight.include": [
+        "**/*.js",
+        "**/*.jsx",
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.html",
+        "**/*.php",
+        "**/*.css",
+        "**/*.scss"
+    ],
+    "todohighlight.exclude": [
+        "**/node_modules/**",
+        "**/bower_components/**",
+        "**/dist/**",
+        "**/build/**",
+        "**/.vscode/**",
+        "**/.github/**",
+        "**/_output/**",
+        "**/*.min.*",
+        "**/*.map",
+        "**/.next/**"
+    ],
+    "todohighlight.maxFilesForSearch": 5120,
+    "todohighlight.toggleURI": false,
+    "explorer.confirmDragAndDrop": false,
+    "[scss]": {
+        "editor.defaultFormatter": "michelemelluso.code-beautifier"
+    },
+    "cSpell.words": [
+        "axios",
+        "boder",
+        "cascader"
+    ],
+}

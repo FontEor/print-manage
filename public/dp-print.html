@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>德邦包裹标签补打</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        :root {
+            --bs-font-sans-serif: "微软雅黑","Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        body {
+            padding-bottom: 500px;
+        }
+
+        .toast {
+            background-color: white;
+        }
+
+        .toast-body {
+            height: 300px;
+            overflow-y: scroll;
+        }
+
+        #app .allow-copy {
+            cursor: text;
+            user-select: text;
+        }
+
+        .accordion-button::after {
+            display: none;
+        }
+        .password-mask {
+            position: relative;
+            padding-right: 6rem;
+        }
+        .password-mask input {
+            color: transparent;
+            letter-spacing: 10000px;
+        }
+        .password-mask input::placeholder {
+            letter-spacing: 0;
+        }
+        .password-mask input:focus {
+            color: transparent;
+        }
+        .password-mask ::-moz-selection {
+            color: #b8bae5;
+            background: #b8bae0;
+        }
+        .password-mask ::selection {
+            color: #b8bae5;
+            background: #b8bae0;
+        }
+        .password-mask .show{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            line-height: 1.6;
+            font-size: 1rem;
+            padding: 0.5rem 1.3rem;
+            pointer-events: none;
+        }
+        .password-mask .show::after{
+            content: "";
+            display: inline-block;
+            height: 18px;
+            position: relative;
+            border-right: solid 1px #666;
+            top: 4px;
+            left: 0px;
+            opacity: 0;
+        }
+        .password-mask input:focus + .show:after{
+            animation: Cursor 1.2s infinite;
+        }
+        .clearable-btn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 6rem;
+        }
+        @keyframes Cursor
+        {
+            0%   {opacity: 0;}
+            25%  {opacity: 0;}
+            75%  {opacity: 1;}
+            100% {opacity: 0;}
+        }
+        .btn-primary {
+            --bs-btn-color: #fff;
+            --bs-btn-bg: #3c6ef0;
+            --bs-btn-border-color: #3c6ef0;
+            --bs-btn-hover-color: #fff;
+            --bs-btn-hover-bg: #638bf3;
+            --bs-btn-hover-border-color: #638bf3;
+            --bs-btn-focus-shadow-rgb: 99, 39, 243;
+            --bs-btn-active-color: #fff;
+            --bs-btn-active-bg: #3663d8;
+            --bs-btn-active-border-color: #3663d8;
+            --bs-btn-active-shadow: inset 0 3px 5px rgba(54, 99, 216, 0.125);
+            --bs-btn-disabled-color: #fff;
+            --bs-btn-disabled-bg: #9eb7f8;
+            --bs-btn-disabled-border-color: #9eb7f8;
+        }
+    </style>
+</head>
+
+<body id="app">
+
+<!-- 主要容器 -->
+<section>
+    <div class="container" style="padding-bottom: 0!important;">
+        <div class="row mb-2">
+            <div class="col-md-12 col-xl-6 text-center mx-auto">
+                <h2 class="display-6 fw-bold mb-5"><span class="pb-3 underline">德邦面单补打<br></span></h2>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12">
+                <div>
+                    <form class="p-3 p-xl-4" method="post" onsubmit="return false" @submit.prevent>
+                        <label class="w-100 password-mask">
+<!--                            <span class="text-success">请在这里输入包裹号后点击回车键盘或者打印按钮</span>-->
+                            <input id="code" v-model="form.packageCode" @keyup.enter="onPrint" class="shadow form-control"
+                                   type="password" name="packageCode" autocomplete="off"
+                                   placeholder="请在这里输入包裹号后点击回车或者打印按钮"/>
+                            <div class="show" disabled>{{ form.packageCode }}</div>
+                            <button @click="() => {form.packageCode = ''}" type="button" class="clearable-btn btn btn-primary">清空</button>
+                        </label>
+                        <div class="mb-3"></div>
+                        <template v-if="false">
+                            <label class="w-100">
+                                <select v-model="printType" class="form-select" placeholder="请选择打印方式">
+                                    <option value="web">网页打印</option>
+                                    <option value="plugin">插件打印</option>
+                                </select>
+                            </label>
+                            <div class="mb-3"></div>
+                        </template>
+                        <label class="w-100">
+                            <select v-model="form.templateCode" class="form-select" placeholder="请选择面单尺寸">
+                                <option value="DPBD76X105">76*105</option>
+                                <option value="DPBD100X100">100*100</option>
+                            </select>
+                        </label>
+                        <div class="mb-3"></div>
+                        <div>
+                            <span class="text-success">历史打印单号：{{ codeCache }}</span>
+                        </div>
+                        <div class="mb-3"></div>
+                        <button @click.prevent="onPrint" class="btn btn-primary shadow d-block w-100" type="button">开始打印</button>
+                        <div class="mb-3"></div>
+                        <div v-show="errorMessage" class="alert alert-danger" role="alert">
+                            打印错误：{{ errorMessage }}
+                        </div>
+                        <div class="mb-3"></div>
+                        <label class="w-100">
+<!--                            <span class="text-success">打印组件返回的报文，打印正常的情况下无需关心</span>-->
+                            <textarea :value="responseText" class="shadow form-control" id="message-1" name="message"
+                                      rows="6"
+                                      placeholder="打印组件返回的报文，打印失败时，将报文复制通过京ME发送给org.ydy1"></textarea>
+                        </label>
+                    </form>
+                </div>
+                <!-- 如果是插件打印 -->
+                <div v-if="printType === 'plugin'">
+                    <p class="text-success"><strong>操作步骤：</strong></p>
+                    <div class="text-success">
+                        1、安装打印组件：<a
+                            style="text-decoration: underline;"
+                            href="http://prod-oms-app-cprt.jdwl.com/OpenCloudPrint/setup.exe"
+                            class="link-success" target="_blank">点击此处</a>下载组件；
+                    </div>
+                    <div class="text-success">2、点击下方“链接打印组件并刷新打印机列表”按钮后，选择要使用的打印机</div>
+                    <div class="text-success">3、扫描包裹号条码或输入包裹号进行面单打印。</div>
+                    <div class="text-success">&emsp;</div>
+                    <div class="text-success">打印异常，京ME咨询org.ydy1</div>
+                </div>
+                <div v-else>
+                    <div class="text-success">打印如果出现异常，京ME咨询org.ydy1</div>
+                    <div class="text-danger">不要禁止新页面弹出</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 插件打印提示 -->
+<section v-if="printType === 'plugin'">
+    <div class="container py-5">
+        <div class="row mb-2">
+            <div class="col-md-12 col-xl-6 text-center mx-auto">
+                <h2 class="display-6 fw-bold mb-5"><span class="pb-3 underline">打印组件配置<br></span></h2>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12">
+                <div>
+                    <form class="p-3 p-xl-4" method="post" onsubmit="return false" @submit.prevent>
+                        <div class="mb-3">
+                            <label for="url" class="form-label">组件连接地址：
+                                <span class="text-success">无安装多组件冲突情况无需更改</span>
+                            </label>
+                            <input v-model="url" id="url" class="shadow form-control" type="text" name="url"
+                                   placeholder="组件连接地址"/>
+                        </div>
+                        <button @click="onConnect" class="btn btn-primary shadow d-block w-100" type="button">点击 这里
+                            链接打印组件并刷新打印机列表
+                        </button>
+                        <div class="mb-3"></div>
+                        <span class="text-success">请选择打印机，再次打开页面后会自动选择，上一次选择的打印机</span>
+                        <select v-model="printName" @change="onPrintChange" class="form-select"
+                                placeholder="请选择打印机">
+                            <option v-for="print in printList" :value="print">{{ print }}</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 页面打印提示 -->
+<section v-else>
+    <div class="container py-5">
+        <div class="row mb-2">
+            <div class="col-md-12 col-xl-6 text-center mx-auto">
+                <h2 class="display-6 fw-bold mb-5"><span class="pb-3 underline">常见问题<br></span></h2>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12">
+                <div class="accordion text-muted" role="tablist">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" role="tab">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-1" aria-expanded="true" aria-controls="accordion-1 .item-1">问题：打印出现异常?</button>
+                        </h2>
+                        <div class="accordion-collapse collapse show item-1" role="tabpanel" data-bs-parent="#accordion-1">
+                            <div class="accordion-body">
+                                <div class="text-danger">回答：京ME咨询 org.ydy1</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion text-muted" role="tablist">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" role="tab">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-1" aria-expanded="true" aria-controls="accordion-1 .item-1">问题：火狐浏览器，无法打印?</button>
+                        </h2>
+                        <div class="accordion-collapse collapse show item-1" role="tabpanel" data-bs-parent="#accordion-1">
+                            <div class="accordion-body">
+                                <div class="text-danger">回答：火狐浏览器默认会阻止新窗口弹出，谷歌浏览器无需处理</div>
+                                <div class="text-danger">下面为操作指引，一台电脑只需操作一次。</div>
+                                <div class="row align-items-start">
+                                    <div class="col">
+                                        <div class="card-group">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    步骤一
+                                                </div>
+                                                <img @click="onPreviewImage('/images/allow-open.png')" style="width: 100%;" src="/images/allow-open.png" />
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item">
+                                                        <p class="card-text">1. 点击浏览器上方的《首选项》</p>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <p class="card-text">2. 点击允许 xxxxx 弹出窗口</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    步骤二
+                                                </div>
+                                                <img @click="onPreviewImage('/images/print-firefox.png')" style="width: 100%;" src="/images/print-firefox.png" />
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item">
+                                                        <p class="card-text">1. 打开新打开窗口右上角的打印图标</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion text-muted" role="tablist">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" role="tab">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-1" aria-expanded="true" aria-controls="accordion-1 .item-1">问题：火狐浏览器，无法唤起浏览器打印?</button>
+                        </h2>
+                        <div class="accordion-collapse collapse show item-1" role="tabpanel" data-bs-parent="#accordion-1">
+                            <div class="accordion-body">
+                                回答：请点击<a id="current-link" class="text-danger" href="/location.href" target="_blank">这里</a> 之后，在新页面中尝试
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion text-muted" role="tablist">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" role="tab">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-1" aria-expanded="true" aria-controls="accordion-1 .item-1">问题：火狐浏览器，已经通过京东APP登录，页面仍然需要登录?</button>
+                        </h2>
+                        <div class="accordion-collapse collapse show item-1" role="tabpanel" data-bs-parent="#accordion-1">
+                            <div class="accordion-body">
+                                回答：请点击<a class="text-danger" href="https://sso.jd.com/setCookie?t=sso.jdl.com&callback=sss" target="_blank">这里</a> 之后，回到打印页面，再次尝试
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 操作日志 -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">操作日志</strong>
+            <span class="text-success">操作流程日志以及当前进度</span>
+            <!--                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>-->
+        </div>
+        <div class="toast-body">
+            <div v-for="(me, index) in message">-&emsp;{{ me }}</div>
+        </div>
+    </div>
+</div>
+
+<!-- 预览大图弹框 -->
+<div id="preview-image-dialog" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">查看大图</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img id="preview-image" src="" class="img-fluid" alt="操作提示">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/javascripts/axios.min.js"></script>
+<script src="/javascripts/vue.global.prod.min.js"></script>
+<script src="/javascripts/print.min.js"></script>
+<script src="https://sso.jd.com/setCookie?t=sso.jdl.com&callback=sss"></script>
+<script>
+
+(function () {
+    function getTime() {
+        const date = new Date();
+        let h = date.getHours();
+        if(h <= 9) {
+            h = '0' + h;
+        }
+        let m = date.getMinutes();
+        if(m <= 9) {
+            m = '0' + m;
+        }
+        let s = date.getSeconds();
+        if(s <= 9) {
+            s = '0' + s;
+        }
+        return h + ':' + m + ':' + s;
+    }
+    function getQueryString() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+
+    window.onload = function () {
+        const query = getQueryString();
+        const instance = axios.create();
+        instance.interceptors.request.use((config) => {
+            if(query.code) {
+                if(query.code instanceof Array) {
+                    query.code = query.code.pop();
+                }
+                if(query.state instanceof Array) {
+                    query.state = query.state.pop();
+                }
+                if(config.params) {
+                    config.params.code = query.code
+                    config.params.state = query.state
+                } else {
+                    config.params = {
+                        code: query.code,
+                        state: query.state
+                    }
+                }
+            }
+            if(!config.headers) {
+                config.headers = {};
+            }
+            config.headers['X-Requested-With'] = 'XMLHttpRequest';
+            config.headers['callback'] = location.origin + location.pathname + location.search;
+            return config;
+        })
+        instance.interceptors.response.use(function (res) {
+            if (res.data && typeof res.data.code !== 'undefined') {
+                const code = res.data.code;
+                console.log(code)
+                switch (code) {
+                    case 200:
+                    case '200':
+                        return res;
+                    case 401:
+                        return window.location.replace(`${res.data.data.loginURL}?ReturnUrl=${encodeURIComponent(location.href)}`)
+                    default:
+                        return Promise.reject(res.data)
+                }
+            }
+            return res;
+        }, function (error) {
+            const response = error.response;
+            if(response.status === 401) {
+                const targetUrl  = response.headers.location;
+                if(targetUrl) {
+                    return location.href = targetUrl;
+                }
+            }
+            return Promise.reject(error)
+        })
+        Vue.createApp({
+            data() {
+                const data = {
+                    printType: query.type || "web",
+                    form: {
+                        packageCode: "",
+                        templateCode: "DPBD76X105"
+                    },
+                    codesCache: [],
+                    codeCache: "",
+                    url: "ws://localhost:9113/view",
+                    // 打印机名称
+                    printName: "",
+                    printList: [],
+                    // 组件链接状态
+                    state: 0,
+                    // 状态枚举
+                    stateMap: {
+                        0: "正在连接",
+                        1: "已建立连接",
+                        2: "正在关闭连接",
+                        3: "已关闭连接",
+                    },
+                    message: [],
+                    responseText: "",
+                    cache: '{"orderType":"GET_Version"}',
+                    errorMessage: "",
+                    nickname: ""
+                }
+                try {
+                    // iframe cross origin 无权使用localStorage 无法存储上一次使用的打印机。
+                    const printName = localStorage.getItem('dp-print/printName');
+                    if (printName) {
+                        data.printName = printName;
+                        data.printList = [printName];
+                    }
+                } catch (error) {
+                    console.log('跨域iframe嵌入导致的无法获取上一次打印机数据');
+                }
+                return data
+            },
+            mounted() {
+                this.getUserInfo()
+            },
+            methods: {
+                getUserInfo() {
+                    const query = getQueryString();
+                    instance({
+                        method: "get",
+                        url: "/api/auth/user/current?&sso_service_ticket=" + (query.sso_service_ticket || ""),
+                    }).then(response => {
+                        const nickname = response.data.data.nickname;
+                        this.nickname = nickname;
+                    })
+                },
+                // 连接
+                onConnect() {
+                    this.toast('开始链接打印组件')
+                    if (this.socket) {
+                        try {
+                            if (this.socket.readyState === 1) {
+                                this.toast('socket链接已建立')
+                            }
+                        } catch (e) {
+                            this.createSocket()
+                        }
+                    } else {
+                        this.createSocket()
+                    }
+                },
+                onOpen() {
+                    this.toast('链接成功');
+                    this.refreshState();
+                    if (this.cache && this.printName) {
+                        this.socket.send(this.cache);
+                        this.cache = '{"orderType":"GET_Version"}';
+                    } else {
+                        this.toast('请选择打印机');
+                        this.cache = '{"orderType":"GET_Version"}';
+                    }
+                    this.getPrints();
+                },
+                onMessage(e) {
+                    try {
+                        console.log(e);
+                        let data = e.data;
+                        if (data) {
+                            this.dataHandler(data);
+                        } else {
+                            this.toast('E:组件返回数据不存在')
+                        }
+                    } catch (error) {
+                        console.log('error', error);
+                        this.toast('E:组件返回数据解析错误')
+                    }
+                    this.refreshState();
+                },
+                onError(err) {
+                    this.toast('E:链接失败：' + ((err || {}).message) || "");
+                },
+                onClose() {
+                    this.toast('E:链接断开');
+                    this.createSocket();
+                },
+                onPrintChange() {
+                    if (this.printName) {
+                        localStorage.setItem('dp-print/printName', this.printName)
+                    }
+                },
+                refreshState() {
+                    try {
+                        this.toast('刷新链接状态：' + this.stateMap[this.socket.readyState])
+                        this.state = this.socket.readyState;
+                    } catch (e) {
+                        console.log('链接状态获取失败', e);
+                    }
+                },
+                createSocket() {
+                    this.toast('创建soket链接：' + this.url);
+                    const socket = new WebSocket(this.url);
+                    socket.onopen = this.onOpen;
+                    socket.onmessage = this.onMessage;
+                    socket.onerror = this.onError;
+                    socket.onclose = this.onClose;
+                    this.socket = socket;
+                },
+                getPrints() {
+                    this.toast('获取打印机列表')
+                    this.socket.send("{\"orderType\":\"GET_Printers\"}");
+                },
+                onPrint() {
+                    const code = this.form.packageCode;
+                    if (!code) {
+                        this.errorMessage = '未填写包裹号';
+                        return this.toast('E:未填写包裹号');
+                    }
+                    // if (!/.+-[0-9]+-[0-9]+-/.test(code)) {
+                    //     this.errorMessage = '包裹号格式不正确';
+                    //     return this.toast('E:包裹号格式不正确');
+                    // }
+                    try {
+                        this.codesCache.unshift(code);
+                        if(this.codesCache.length > 5) {
+                            this.codesCache.length = 5;
+                        }
+                        this.codeCache = this.codesCache.join('、')
+                    } catch (e) {
+                        console.log('缓存错误', e);
+                    }
+                    this.form.packageCode = '';
+                    this.toast('发送请求:' + code);
+                    let url = "/api/db/reprint?waybillCode=" + code + '&templateCode=' + (this.form.templateCode || "");
+                    if (query.sso_service_ticket) {
+                        url = "/api/db/reprint?waybillCode=" + code + '&templateCode=' + (this.form.templateCode || "") + "&sso_service_ticket=" +
+                            query.sso_service_ticket;
+                    }
+                    if(this.printType === 'plugin') {
+                        this.refreshState();
+                    }
+                    // 发送请求
+                    this.sendAxios(url, 0);
+                },
+                sendAxios(url, total = 0) {
+                    if(total > 0) {
+                        this.toast('请求失败，重试请求');
+                    }
+                    instance({
+                        url: url,
+                        method: "get",
+                        params: {
+                            sourceSiteId: query.sourceSiteId || ""
+                        }
+                    }).then(response => {
+                        if(response.data.code === 401) {
+                            this.errorMessage = '请刷新页面重新登录！';
+                            this.toast('E:登录失效，请刷新页面重新登录');
+                            return
+                        }
+                        this.toast('请求成功');
+                        this.errorMessage = '';
+                        console.log(response);
+                        switch (this.printType) {
+                            case "plugin":
+                                this.sendData(response.data);
+                                break;
+                            default:
+                                const url = response.data.data;
+                                this.toast('生成PDF成功,下载地址:' + url);
+                                this.printPDF(url);
+                                break;
+                        }
+                    }).catch(error => {
+                        console.log('#######', error);
+                        try {
+                            const response = error.response;
+                            if(response.status === 401) {
+                                return this.loginFail();
+                            }
+                        } catch (error) {}
+                        try {
+                            const code = error.code;
+                            if(code == 0) {
+                                if(total === 0) {
+                                    return this.sendAxios(url, ++total);
+                                }
+                            }
+                        } catch (error) {}
+                        this.toast('E:请求失败');
+                        this.errorMessage = '获取数据失败' + ((error || {}).message || "");
+                        this.toast(error.message);
+                    })
+                },
+                sendData(data) {
+                    this.toast('开始解析请求数据');
+                    try {
+                        const printData = data.data.rePrintData.printData
+                        const templateCode = data.data.templateCode;
+                        const inArgs = JSON.stringify({
+                            operator: "DB",
+                            templateCode: templateCode,
+                            printData: [{
+                                orderNumber: data.data.rePrintData.waybillCode,
+                                customizedPrintData: printData
+                            }],
+                            appKey: "DB",
+                            taskID: Date.now().toString().slice(-20),
+                            outputConfig: [{
+                                outputType: 0,
+                                printerName: this.printName,
+                            }]
+                        })
+                        console.log(inArgs)
+                        if (this.socket && this.socket.readyState === 1) {
+                            this.socket.send(inArgs);
+                        } else {
+                            this.cache = inArgs;
+                            this.createSocket()
+                        }
+                    } catch (e) {
+                        console.log(e)
+                        this.toast('E:解析数据失败');
+                    }
+                },
+                dataHandler(data) {
+                    data = JSON.parse(data);
+                    switch (data.code) {
+                        // 打印机列表
+                        case "6":
+                            if (data.content) {
+                                this.printList = data.content.split(',') || [];
+                            } else {
+                                this.toast('查询不到打印机');
+                            }
+                            break;
+                        case 200:
+                            this.responseText = JSON.stringify(data, undefined, 2);
+                            this.toast('P:打印成功');
+                            this.errorMessage = '';
+                            break;
+                        default:
+                            this.responseText = JSON.stringify(data, undefined, 2);
+                            this.errorMessage = data.message;
+                            this.toast('E:预料之外的数据返回');
+                            break;
+                    }
+                },
+                toast(str = '') {
+                    const time = getTime();
+                    this.message.unshift(time + ' ' + str);
+                    if (this.message.length >= 200) {
+                        this.message.length = 200;
+                    }
+                },
+                printPDF(url) {
+                    this.toast('开始打印');
+                    try {
+                        printJS({ type: 'pdf', printable: url });
+                        this.toast('唤起浏览器打印');
+                    } catch (error) {
+                        this.toast('E:打印失败:' + error.message);
+                        this.errorMessage = '唤起浏览器打印失败, 尝试新页面中打开，注意不要禁止页面弹出:' + ((error || {}).message || "");
+                        this.toast('尝试弹出新页面打开');
+                        window.open(url);
+                        this.toast(url);
+                        window.parent.postMessage({ type: "printFail", url: url }, "*")
+                    }
+                },
+                loginFail() {
+                    this.toast('E:登录失效');
+                    this.errorMessage = '请刷新页面重新登录！';
+                    this.loginFailNotice();
+                },
+                loginFailNotice() {
+                    try {
+                        // 跨标签页通信
+                        new BroadcastChannel('dp-print').postMessage(JSON.stringify({ type: "loginFail" }));
+                    } catch (error) {
+                        // 跨Iframe页通信
+                        window.parent.postMessage({ type: "loginFail" }, "*")
+                    }
+                },
+                onPreviewImage(url) {
+                    document.getElementById('preview-image').src = url;
+                    new bootstrap.Modal('#preview-image-dialog').show();;
+                }
+            },
+        }).mount('#app');
+        document.getElementById('current-link').href = location.href;
+    }
+})()
+</script>
+<script>
+    document.addEventListener('keydown', function(event) {
+        switch (event.keyCode) {
+            case 37:
+            case 38:
+            case 39:
+            case 40:
+                event.stopPropagation()
+                event.preventDefault();
+                return false;
+                break;
+            default:
+                break;
+        }
+    });
+</script>
+</body>
+</html>

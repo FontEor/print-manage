@@ -1,0 +1,299 @@
+@import url(var.less);
+
+.page-layout {
+  .page-container {
+    display: block;
+  }
+
+  .page-content-wrapper {
+    flex-direction: column;
+    height: calc(100vh - 60px);
+    background-color: @global-background-color;
+    padding: 16px 16px 20px 15px;
+  }
+
+  .page-content {
+    height: 100%;
+
+    >div {
+      height: 100%;
+    }
+  }
+
+  .page-header {
+    min-width: 1366px;
+    display: flex;
+    height: var(--s-header-height);
+    background-color: var(--s-header-bg-color);
+    padding: 0 32px 0 20px;
+    border-bottom: 1px solid var(--s-divider-weak-color);
+
+    .el-dropdown :focus-visible {
+      outline: transparent auto 1px !important;
+    }
+
+    .el-menu {
+      --el-menu-bg-color: var(--s-header-bg-color);
+      --el-menu-border-color: transparent;
+      --el-menu-hover-bg-color: transparent;
+      --el-menu-hover-text-color: var(--s-text-color-2);
+      --el-menu-text-color: var(--s-text-color-2);
+      --el-menu-active-color: var(--s-blue-color);
+
+      .el-menu-item {
+        min-width: 128px;
+      }
+
+      .el-menu-item.is-active {
+        background: #fff;
+      }
+    }
+
+    .el-menu--horizontal>.el-menu-item {
+      border: none !important;
+      position: relative;
+
+      &.is-active {
+        font-weight: 600;
+
+        &::before {
+          content: " ";
+          position: absolute;
+          left: 50%;
+          margin-left: -8px;
+          bottom: -1px;
+          width: 16px;
+          height: 4px;
+          background-color: var(--el-menu-active-color);
+          border-radius: 2px;
+        }
+      }
+
+      &:hover {
+        font-weight: 600;
+      }
+    }
+
+    .page-header-logo {
+      min-width: 334px;
+      height: 24px;
+      margin: auto 0;
+      background: transparent url("../assets/img/header/logo.png") no-repeat center center;
+      background-size: contain;
+    }
+
+    .page-header-book {
+      width: 100px;
+      min-width: 100px;
+      line-height: 63px;
+      .el-link {
+        vertical-align: top;
+      }
+    }
+
+    .page-header-orgName {
+      line-height: 63px;
+      width: 389px;
+      font-size: 14px;
+      color: var(--s-text-color-3);
+      .page-header-system {
+        vertical-align: baseline;
+        .el-input {
+          width: 170px;
+          height: 32px;
+          .el-input__inner {
+            color: var(--s-black-color) !important;
+          }
+        }
+      }
+    }
+
+    
+    .page-header-user {
+      width: 63px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      .el-dropdown-link {
+        width: 64px;
+        display: flex;
+        align-items: center;
+      }
+
+      .page-header-avatar {
+        background: transparent url("../assets/img/header/avatar.png") no-repeat center center;
+        background-size: cover;
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+      }
+
+      .el-icon--right {
+        width: 16px;
+        height: 16px;
+        margin-left: 16px;
+      }
+    }
+
+
+  }
+
+  .page-aside {
+    background-color: @aside-background-color;
+    color: @aside-color;
+    max-width: 190px;
+  }
+
+  .asideWidth {
+    transition-duration: 0.4s;
+    width: 64px !important;
+  }
+
+  .hamburger {
+    align-self: center;
+    width: 10px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    .jdl-icon-arrow-left,
+    .jdl-icon-arrow-right {
+      position: absolute;
+    }
+
+    .default-icon {
+      width: 10px;
+      height: 48px;
+    }
+
+    .hover-icon {
+      width: 10px;
+      height: 48px;
+      display: none;
+    }
+
+    &:hover .default-icon {
+      display: none;
+    }
+
+    &:hover .hover-icon {
+      display: inline-block;
+    }
+
+    &:hover .jdl-icon-arrow-left,
+    &:hover .jdl-icon-arrow-right {
+      color: #fff;
+    }
+  }
+
+
+  .page-menu {
+    // height: 100%;
+    height: calc(100vh - 76px);
+    text-align: left;
+    padding: 0 8px;
+    margin-top: 16px;
+
+    .menu__submenu {
+      span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+
+// 标题下拉菜单
+.header-system-popper {
+  border-radius: 8px;
+  overflow: hidden;
+  .el-popper__arrow {
+    opacity: 0;
+  }
+  .el-dropdown-menu__item.is-disabled {
+    color: var(--el-text-color-regular);
+    cursor: text;
+    &:hover {
+      background-color: #fff !important;
+      color: var(--el-text-color-regular) !important;
+    }
+  }
+}
+
+// 选中系统下拉样式
+.system-apply {
+  min-width: 194px !important;
+  .el-popper__arrow {
+    &::before {
+      display: none;
+    }
+  }
+  .el-select-dropdown  {
+    padding: 4px !important;
+    .el-select-dropdown__list {
+      margin: 0 !important;
+      max-height: 178px;
+    }
+    .el-select-dropdown__item {
+      // margin-right: 12px;
+    }
+  }
+  .system-apply-option {
+    min-width: 170px;
+    height: 48px;
+    .apply-option-item {
+      
+      .apply-option-name {
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 16px;
+        margin-top: 8px;
+        margin-bottom: 4px;
+        
+      }
+      .apply-option-code {
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 12px;
+        margin-bottom: 8px;
+        color: var(--s-text-color-3);
+      }
+    }
+  }
+  .apply-option-enmpty {
+    height: 40px;
+    cursor: default;
+    &:hover {
+      background-color: transparent !important;
+      --el-text-color-regular: transparent !important;
+    }
+  }
+  .system-apply-item {
+    color: var(--f-light-primary);
+    width: 100%;
+    min-width: 170px;
+    height: 40px;
+    bottom: 0;
+    position: absolute;
+    border-radius: 0;
+    border-top: 1px solid #F1F2F4;
+    background-color: #FFFFFF !important;
+    margin-bottom: 0;
+    &:hover {
+      color: @active-color !important;
+      background-color: #FFFFFF !important;
+    }
+  }
+
+  .is-empty {
+    .apply-option-enmpty, .system-apply-item {
+      display: none;
+    }
+  }
+}

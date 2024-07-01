@@ -1,0 +1,297 @@
+.template-manage-version_wrap {
+  display: flex;
+  height: 100%;
+}
+
+.template-version-list_wrap {
+  flex: 1;
+  border-right: 1px solid var(--s-divider-weak-color);
+}
+
+.template-manage-publish-popover {
+  width: 220px;
+  &.el-popper:not(.el-dropdown__popper) {
+    padding: 12px 16px 10px 16px !important;
+  }
+  .el-button--small {
+    font-size: 12px !important;
+    padding: 4px 12px !important;
+  }
+  .template-manage-publish-popover-item {
+    .el-form-item__content {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+  .el-switch__label {
+    font-weight: normal;
+    color: var(--s-text-color-2);
+  }
+  .el-form-item.is-error {
+    margin-bottom: 15px !important;
+  }
+}
+
+.template-manage-version-preview_wrap {
+  width: 449px;
+  margin: 0 10px 32px 32px;
+  flex-shrink: 0;
+  .el-carousel__container {
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+  }
+}
+
+.version-type-title {
+  color: var(--s-black-6);
+  font-size: 14px;
+  font-weight: 600;
+  padding-bottom: 12px;
+  text-align: left;
+}
+
+.published-title {
+  padding-top: 20px;
+}
+
+.version-card-item {
+  margin: 0 16px 12px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  line-height: 18px;
+
+  .version-card-content {
+    width: 131px;
+    height: 131px;
+    border-radius: 8px;
+    border: 1px solid var(--s-border-color);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 8px;
+
+    &.version-card-active {
+      border-color: var(--s-text-color-2);
+    }
+
+    .card-description {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 24px;
+      background-color: var(--s-mark-bg-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+    }
+
+    .version-number {
+      font-size: 14px;
+      font-weight: normal;
+      color: var(--s-tab-active-bg-color);
+      padding-left: 12px;
+    }
+
+    .default-version {
+      display: inline-block;
+      height: 16px;
+      width: 54px;
+      background: linear-gradient(135deg, var(--s-pink-6) 0%, var(--s-pink-4) 100%);
+      border-radius: 16px 0 2px 16px;
+      font-weight: normal;
+      color: var(--s-tab-active-bg-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      span {
+        font-size: 10px;
+        -webkit-transform: scale(0.83);
+      }
+
+    }
+  }
+
+  .version-card-buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    line-height: 18px;
+  }
+}
+
+.version-card-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  .el-link__inner {
+    font-weight: normal;
+  }
+}
+
+.version-card-time {
+  color: var(--s-text-color-4);
+  font-size: 12px;
+  padding-bottom: 4px;
+}
+
+.template-version-preview {
+  height: 100%;
+  min-height: 420px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+
+  .template-version-preview-carousel {
+    width: 375px;
+    height: 100%;
+
+    .el-carousel__container {
+      height: 100%;
+    }
+
+    .el-carousel__item {
+      display: flex;
+      flex-direction: column;
+      padding-right: 6px;
+    }
+
+    .preview-description {
+      height: 145px;
+      border: 1px solid var(--s-divider-color);
+      border-top: none;
+      overflow: hidden;
+      border-radius: 0 0 8px 8px;
+      padding-top: 12px;
+      display: flex;
+      flex-direction: column;
+
+      .description-item-wrap {
+        text-align: left;
+        font-size: 14px;
+        line-height: 20px;
+        padding: 0 12px 4px 4px;
+
+        .description-weaken {
+          color: var(--s-text-color-3);
+          padding-left: 8px;
+        }
+      }
+
+      .preview-button-wrap {
+        padding: 0 12px 12px 12px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        flex: 1;
+
+        .el-button {
+          margin-left: 8px;
+          height: 28px;
+        }
+
+        .el-button--info { 
+          border-radius: 8px;
+          background-color: var(--s-bg-color);
+          span {
+            color: var(--s-black-6);
+          }
+          &:hover {
+            background-color: rgba(60,110,240,0.1);
+            span {
+              color: var(--s-blue-6);
+            }
+          }
+        }
+      }
+    }
+
+    .preview-image-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      background-color: var(--s-border-color);
+      height: 0;
+      .version-description {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 48px;
+        background-color: var(--s-mark-bg-color);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 24px;
+        color: var(--s-header-bg-color);
+        font-size: 18px;
+        font-weight: 600;
+      }
+      .el-image {
+        width: 369px;
+        height: 559px;
+        max-height: 100%;
+        max-width: 100%;
+      }
+      
+
+    }
+  }
+
+  .version-bg {
+    position: absolute;
+    bottom: 8px;
+    right: -6px;
+    width: 88px;
+    height: 32px;
+
+    .description {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      left: 0;
+      font-size: 14px;
+      font-weight: normal;
+      color: var(--s-header-bg-color);
+      transform: translateY(-34%);
+      text-align: center;
+
+    }
+  }
+
+  .arrow {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background-color: var(--s-black-bg-color);
+    text-align: center;
+    line-height: 32px;
+    color: var(--s-header-bg-color);
+    font-size: 32px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: all .3s;
+
+    &.left {
+      left: 0;
+    }
+
+    &.right {
+      right: 0;
+    }
+
+    &.no-more {
+      background-color: var(--s-arrow-no-more-bg-color);
+      cursor: not-allowed;
+    }
+  }
+
+}

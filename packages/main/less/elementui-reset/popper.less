@@ -1,0 +1,67 @@
+.el-popper:not(.el-dropdown__popper, .is-dark, .system-apply) {
+  background: var(--s-main-bg-color) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 12px 0 var(--s-black-boder-color) !important;
+  border: none !important;
+  padding: 10px 16px !important;
+  color: var(--s-black-6);
+
+  .el-popper__arrow {
+    &::before {
+      display: none;
+    }
+  }
+
+  &.is-dark {
+    background: var(--s-popper-dark-bg) !important;
+    color: var(--s-header-bg-color) !important;
+    box-shadow: 0 2px 12px 0 var(--s-black-boder-color) !important;
+  }
+  // 外面白色不敢去掉啊~ 不知道哪里用的 先把里面暂时去掉试试 左侧 menu 收起时 弹框
+  .el-menu--popup-container {
+    > ul {
+      box-shadow: none;
+      margin-left: -9px;
+      margin-right: -9px;
+    }
+  }
+}
+.is-dark[data-popper-placement^="bottom"] {
+  .el-popper__arrow {
+    &:before {
+      border:  none !important;
+      background: linear-gradient(135deg, var(--s-popper-dark-bg) 0%, var(--s-popper-dark-bg) 48%, transparent, 50%,  transparent 100%) !important;
+    }
+  }
+}
+.is-dark[data-popper-placement^="top"] {
+  .el-popper__arrow {
+    &:before {
+      border:  none !important;
+      background: linear-gradient(315deg,var(--s-popper-dark-bg) 0%, var(--s-popper-dark-bg) 48%, transparent, 50%,  transparent 100%) !important;
+    }
+  }
+}
+.is-dark[data-popper-placement^="left"] {
+  .el-popper__arrow {
+    &:before {
+      border:  none !important;
+      background: linear-gradient(225deg,var(--s-popper-dark-bg) 0%, var(--s-popper-dark-bg) 48%, transparent, 50%,  transparent 100%) !important;
+    }
+  }
+}
+.is-dark[data-popper-placement^="right"] {
+  .el-popper__arrow {
+    &:before {
+      border:  none !important;
+      background: linear-gradient(45deg,var(--s-popper-dark-bg) 0%, var(--s-popper-dark-bg) 48%, transparent, 50%,  transparent 100%) !important;
+    }
+  }
+}
+
+.el-popper.is-light {
+  .el-popper__arrow:before {
+    border: none;
+    box-shadow: 0 0 2px var(--s-dop-down-shadow-color);
+  }
+}

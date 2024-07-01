@@ -1,0 +1,16 @@
+.enum-new-list-container {
+  flex: 1;
+  background-color: var(--s-header-bg-color);
+  border-radius: 8px;
+  overflow: hidden;
+  min-width: 700px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: flex-start;
+  .el-table__inner-wrapper {
+    &::before {
+      display: none;
+    }
+  }
+}
